@@ -1,0 +1,3 @@
+exportPattern("^[[:alpha:]]+")
+importFrom("grDevices", "colorRampPalette")
+importFrom("utils", "read.table", "write.table")

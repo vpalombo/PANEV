@@ -1,0 +1,4 @@
+path_ID	value
+path:map00010	324.2287938
+path:map00020	-21.31286976
+path:map00071	385.7377373

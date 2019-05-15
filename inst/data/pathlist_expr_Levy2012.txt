@@ -1,8 +1,11 @@
 path_ID	value
+path:map04514	16
+path:map04940	14
+path:map04151	6
+path:map04210	5
+path:map04630	5
+path:map04010	4
 path:map04931	1
-path:map04940	1
-path:map04151	1
-path:map04210	1
 path:map04660	1
 path:map04668	1
 path:map04910	1
@@ -11,11 +14,8 @@ path:map00062	1
 path:map00561	1
 path:map00564	1
 path:map01212	1
-path:map04010	1
 path:map04012	1
 path:map04020	1
 path:map04060	1
 path:map04141	1
 path:map04510	1
-path:map04514	1
-path:map04630	1

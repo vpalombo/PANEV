@@ -30,12 +30,12 @@ In particular, when complex phenomenon is considered, create a network of multip
 
 This manual describes the Pathways Network Visualization (PANeV) R package. The idea is to create a 'functional' network between a set of main pathways of interest (first level - FL or 1L) and *n* levels of upstream/downstream interconnected pathways, to identify which genes, from a given list of genes of interest, are involved. The  network refers to connected pathways and genes partecipating to sequential steps and thus presumed to affect the phenotype/condition of interest. 
 
-More in details, PANEV approach is based on information available on KEGG databases. The network is created based on the number (*n*) of levels required for the investigation. Starting from the FL (1L) chosen by the user, PANEV uncovers the connections between 1L and upstream/downstream pathways (from 1 to *n* degrees of interaction). Then, once the backbone of interaction pathways is created, PANEV highlights the genes belonging to the multiple investigated levels and provides a pathways/genes-based network visualization.
+More in details, PANEV  is based on information available on KEGG databases. The network is created based on the number (*n*) of levels required for the investigation. Starting from the FL (1L) chosen by the user, PANEV uncovers the connections between 1L and upstream/downstream pathways (from 1 to *n* degrees of interaction). Then, once the backbone of interaction pathways is created, PANEV highlights the genes belonging to the multiple investigated levels and provides a pathways/genes-based network visualization.
 The highlighted genes may be considered good candidates for the trait/condition of interest, because supported by functional evidence.
 
 Overall, PANEV helps to overcome the limitations of classical functional enrichment analysis and pathway analysis, facilitating the interpretation of complex biological processes.
 
-However, since the package relies on KEGG, PANEV approach returns meaningful results only for genes with functional information available.
+However, since the package relies on KEGG, PANEV returns meaningful results only for genes with functional information available.
 
 The package is able to analyse genomic or transcriptomic outcomes for all species annotated in KEGG.
 
@@ -47,7 +47,9 @@ The access to KEGG repositories has specific copyright conditions (https://www.k
 The R scripts and package described in this manual can be downloaded and installed from github link https://github.com/vpalombo/panev. 
 The package is installed using:
 ```
-iinstall_github("vpalombo/panev")
+install.packages("devtools") #if needed
+library("devtools")
+install_github("vpalombo/PANEV")
 ```
 To load the package into the R environment type:
 ```
@@ -679,7 +681,7 @@ Among these genes, 171 were newly identified for type 1 diabetes mellitus, since
 
 In particular, the authors reported four non-HLA genes (*RASIP1*, *STRN4*, *BCAR1* and *MYL2*) and three *HLA* genes (*FYN*, *HLA-J* and *PPP1R11*) as validated by both replication and differential expression studies.
 
-We performed PANEV considering the list of 171 newly genes, to verify the possible contribution of PANEV approach for candidate genes identification and more broadly for high-throughput data interpretation.
+We performed PANEV considering the list of 171 newly genes, to verify the possible contribution of PANEV visualization for candidate genes identification and more broadly for high-throughput data interpretation.
 
 ##Genomic dataset analysis
 '*The Type I diabetes mellitus*', '*Insulin resistance*' and '*AGE-RAGE signaling pathway in diabetic complications*' were chosen as FL pathways, since clearly connected to the trait of interest (Greenbaum, 2002; Ramasamy et al., 2005). 
@@ -738,7 +740,7 @@ panev.script(in.file = in.file,
 #   
 #   Well done! Diagram visualization was created and exported. 
 ```
-Overall PANEV results obtained from validation dataset are in line with reference study outcomes (Qiu et al., 2014), confirming the effectiveness of our approach.
+Overall PANEV results obtained from validation dataset are in line with reference study outcomes (Qiu et al., 2014), confirming the effectiveness of our visualization approach.
 
 In particular, 4 out of 7 genes validated both replication and differential expression studies (Qui et al. 2014) were highlighted by PANEV: *PTPN11*, *BCAR1*, *MYL2* and *FYN*.
 The other three genes (*RASIP1*, *STRN4* and *HLA-J*) were not detected by PANEV, since, although present in KEGG databases, they were not yet assigned to any pathway.
@@ -875,7 +877,7 @@ Since the authors did not provide pathway estimated scores, we substituted those
 # panev.example(type="validation")
 
 # Parameters
-in.file="genelist_annotated_qiu2014.txt"
+in.file="genelist_expr_Levy2012.txt"
 #
 # Head of "genelist_expr_Levy2012" file
 #  ensembl_gene_id     external_gene_name   entrezgene   FC     pvalue 
@@ -931,7 +933,7 @@ This PANEV visualization helped to interpret the results obtained from gene expr
 The diagram showed the relationships among genes and pathways and allowed us to identify functionally related entities with possibly coordinated expression changes.
 
 #Conclusion
-PANEV represents an interesting approach for reducing the complexity of the challenge of high-throughput data mining and for candidate genes identification. Overall, PANEV allows overcoming the limitations of classical functional enrichment analysis providing an integrated summary among pathways and genes of interest, facilitating the data interpretation. 
+PANEV represents an interesting visualization approach for reducing the complexity of the challenge of high-throughput data mining and for candidate genes identification. PANEV providing an integrated summary among pathways and genes of interest, facilitating the data interpretation. 
 
 The reference study validation confirms the effectiveness of PANEV approach, particularly in terms of timesaving.
 

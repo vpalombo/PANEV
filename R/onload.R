@@ -17,6 +17,9 @@
   suppressWarnings(suppressPackageStartupMessages(library(XML)))
   suppressWarnings(suppressPackageStartupMessages(library(visNetwork)))
   suppressWarnings(suppressPackageStartupMessages(library(RColorBrewer)))
+  suppressWarnings(suppressPackageStartupMessages(library(BiocManager)))
+  suppressWarnings(suppressPackageStartupMessages(library(biomaRt)))
+  suppressWarnings(suppressPackageStartupMessages(library(KEGGREST)))
 
   require(bc3net)
   require(data.table)
@@ -25,6 +28,9 @@
   require(XML)
   require(visNetwork)
   require(RColorBrewer)
+  require(BiocManager)
+  require(biomaRt)
+  require(KEGGREST)
 
 }
 

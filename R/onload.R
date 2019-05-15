@@ -11,28 +11,20 @@
   packageStartupMessage(mymsg)
   
   suppressWarnings(suppressPackageStartupMessages(library(bc3net)))
-  suppressWarnings(suppressPackageStartupMessages(library(biomaRt)))
-  suppressWarnings(suppressPackageStartupMessages(library(KEGGREST)))
   suppressWarnings(suppressPackageStartupMessages(library(data.table)))
   suppressWarnings(suppressPackageStartupMessages(library(stringr)))
   suppressWarnings(suppressPackageStartupMessages(library(dplyr)))
   suppressWarnings(suppressPackageStartupMessages(library(XML)))
   suppressWarnings(suppressPackageStartupMessages(library(visNetwork)))
-  suppressWarnings(suppressPackageStartupMessages(library(limma)))
   suppressWarnings(suppressPackageStartupMessages(library(RColorBrewer)))
-  suppressWarnings(suppressPackageStartupMessages(library(bindrcpp)))
-  
+
   require(bc3net)
-  require(biomaRt)
-  require(KEGGREST)
   require(data.table)
   require(stringr)
   require(dplyr)
   require(XML)
   require(visNetwork)
-  require(limma)
   require(RColorBrewer)
-  require(bindrcpp)
-  
+
 }
 

@@ -91,7 +91,7 @@ panev.exprdataPreparation <- function(
     }
   }
   #generate output file name
-  in.file <- limma::removeExt(in.file, sep =".")
+  in.file <- gsub("\\..*", "", in.file)
   #convertion gene ID
   orgs <- biomaRt::listDatasets(biomaRt::useMart("ensembl"))
   if (gene_id=="ensembl"){

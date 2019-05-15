@@ -9,6 +9,7 @@ Description: PaNeV is an R package set for pathway-based network gene visualizat
 License: GPL (>=3)
 Imports:
   bc3net (>= 1.0.4),
+  bindrcpp (>= 0.2.2),
   biomaRt (>= 2.35.1),
   KEGGREST (>= 1.14.1),
   data.table (>= 1.11.4),
@@ -23,4 +24,4 @@ RoxygenNote: 6.1.0
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2018-05-28 14:56:22 UTC; valentinopalombo
+Packaged: 2019-05-13 14:56:22 UTC; valentinopalombo

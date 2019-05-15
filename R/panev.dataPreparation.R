@@ -82,7 +82,7 @@ panev.dataPreparation <- function(
   }
   
   #generate output file name
-  in.file <- limma::removeExt(in.file, sep =".")
+  in.file <- gsub("\\..*", "", in.file)
   
   #convert gene id from ensembl to entrez gene id or viceversa and export the result
   if (gene_id=="ensembl"){

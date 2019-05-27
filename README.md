@@ -35,7 +35,7 @@ PANEV functions could be divided in two different steps: data preparation and da
 
 Since PANEV interrogates biomaRt or KEGG databases through KEGGREST, a **working internet connection** is required to properly run PANEV functions.
 
-<br> <img src="https://github.com/vpalombo/PANEV/tree/master/vignettes/images/fig1.jpg" alt="Fig.1: The general architecture of the workflow of PANEV package and schematic illustration of main functions. The yellow rectangles represent the PANEV functions. The green circles represent the input data lists, in particular gene or pathway lists. The red diamonds represent the output from data preparation PANEV functions. The blue rectangles represent the final PANEV outcomes" width="450"> <br>
+<br> <img src="https://github.com/vpalombo/PANEV/tree/master/vignettes/images/fig1.jpg" alt="Fig.1: The general architecture of the workflow of PANEV package and schematic illustration of main functions. The yellow rectangles represent the PANEV functions. The green circles represent the input data lists, in particular gene or pathway lists. The red diamonds represent the output from data preparation PANEV functions. The blue rectangles represent the final PANEV outcomes." width="450"> <br>
 
 Example files
 =============
@@ -488,17 +488,11 @@ genes.1L
 
 Along with the **tabular format**, the function gets also the **diagram visualization** of PANEV results, saved in an interactive '*.html*' file. The diagram allows zooming on all content for an optimal readability.
 
-<img src="images/fig2.png" alt="Fig.2: An example of the 'html' file with the network-based visualization of PANEV results. The green circles represent the  functional candidate genes inside the network of pathways generated. The violet diamonds represent the first level (FL) pathway(s), directly connected to the trait of interest and showing candidate gene(s). The yellow diamonds represent the second level of pathways connected with FL pathways and showing candidate gene(s). The orange diamonds represent the pathways investigated without any candidate gene. The diagram allows identifying the relationships among genes and pathways for each investigated level." width="100%" />
-<p class="caption">
-Fig.2: An example of the 'html' file with the network-based visualization of PANEV results. The green circles represent the functional candidate genes inside the network of pathways generated. The violet diamonds represent the first level (FL) pathway(s), directly connected to the trait of interest and showing candidate gene(s). The yellow diamonds represent the second level of pathways connected with FL pathways and showing candidate gene(s). The orange diamonds represent the pathways investigated without any candidate gene. The diagram allows identifying the relationships among genes and pathways for each investigated level.
-</p>
+<br> <img src="https://github.com/vpalombo/PANEV/tree/master/vignettes/images/fig2.jpg" alt="Fig.2: An example of the 'html' file with the network-based visualization of PANEV results. The green circles represent the  functional candidate genes inside the network of pathways generated. The violet diamonds represent the first level (FL) pathway(s), directly connected to the trait of interest and showing candidate gene(s). The yellow diamonds represent the second level of pathways connected with FL pathways and showing candidate gene(s). The orange diamonds represent the pathways investigated without any candidate gene. The diagram allows identifying the relationships among genes and pathways for each investigated level." width="450"> <br>
 
 The '*html*' diagram is **interactive and interrogable**. You can select nodes by ID/label (e.g *FASN* gene).
 
-<img src="images/fig3.png" alt="Fig.3: An example of node selection of PANEV network-based visualization result." width="100%" />
-<p class="caption">
-Fig.3: An example of node selection of PANEV network-based visualization result.
-</p>
+<br> <img src="https://github.com/vpalombo/PANEV/tree/master/vignettes/images/fig3.jpg" alt="Fig.3: An example of node selection of PANEV network-based visualization result." width="450"> <br>
 
 ### Transcriptomic dataset
 
@@ -578,17 +572,11 @@ The classification into upregulated/downregulated genes/pathways is done as func
 
 The '*html*' diagram is interactive and allows zooming on all content for an optimal readability.
 
-<img src="images/fig4.png" alt="Fig.4: An example of the 'html' file with the network-based visualization of PANEV result considering an expression dataset. The circles represent the genes coloured based on their fold change (FC) values. The diamonds represent the pathways of interest coloured based on their expression estimated scores [i.e. flux values obtained with Dinamic Impact Approach (Bionaz et al., 2012)]. The diagram shows the relationships among genes and pathways and allows identifying functionally related entities with possibly coordinated expression changes." width="100%" />
-<p class="caption">
-Fig.4: An example of the 'html' file with the network-based visualization of PANEV result considering an expression dataset. The circles represent the genes coloured based on their fold change (FC) values. The diamonds represent the pathways of interest coloured based on their expression estimated scores \[i.e. flux values obtained with Dinamic Impact Approach (Bionaz et al., 2012)\]. The diagram shows the relationships among genes and pathways and allows identifying functionally related entities with possibly coordinated expression changes.
-</p>
+<br> <img src="https://github.com/vpalombo/PANEV/tree/master/vignettes/images/fig4.jpg" alt="Fig.4: An example of the 'html' file with the network-based visualization of PANEV result considering an expression dataset. The circles represent the genes coloured based on their fold change (FC) values. The diamonds represent the pathways of interest coloured based on their expression estimated scores [i.e. flux values obtained with Dinamic Impact Approach (Bionaz et al., 2012)]. The diagram shows the relationships among genes and pathways and allows identifying functionally related entities with possibly coordinated expression changes." width="450"> <br>
 
 The '*html*' diagram is also interrogable. You can select nodes by ID/label (e.g. *ALDH2* gene).
 
-<img src="images/fig5.png" alt="Fig.5: Example of node selection of PANEV network-based visualization result obtained on transcriptomic dataset." width="100%" />
-<p class="caption">
-Fig.5: Example of node selection of PANEV network-based visualization result obtained on transcriptomic dataset.
-</p>
+<br> <img src="https://github.com/vpalombo/PANEV/tree/master/vignettes/images/fig5.jpg" alt="Fig.5: Example of node selection of PANEV network-based visualization result obtained on transcriptomic dataset." width="450"> <br>
 
 Enrichment analysis
 -------------------

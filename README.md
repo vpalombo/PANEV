@@ -35,7 +35,7 @@ PANEV functions could be divided in two different steps: data preparation and da
 
 Since PANEV interrogates biomaRt or KEGG databases through KEGGREST, a **working internet connection** is required to properly run PANEV functions.
 
-![alt text](https://github.com/vpalombo/PANEV/tree/master/vignettes/images/fig1.png)
+\[<https://github.com/vpalombo/PANEV/tree/master/vignettes/images/fig1.png>\]
 
 Example files
 =============

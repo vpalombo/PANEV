@@ -28,9 +28,9 @@ knitr::opts_chunk$set(
 Nowadays, the increasing in data generated from genomic and transcriptomic analysis requires strategies to solve the challenge of data mining. In this sense, the use of tools for pathway analysis and/or functional enrichment is *de facto* standard for the post analytic interrogation. 
 In particular, when complex phenomenon is considered, create a network of multiple interconnected pathways of interest could be useful to investigate the underlying biology and, ultimately, identify functional candidate genes affecting the trait under investigation.
 
-This manual describes the Pathways Network Visualization (PANeV) R package. The idea is to create a 'functional' network between a set of main pathways of interest (first level - FL or 1L) and *n* levels of upstream/downstream interconnected pathways, to identify which genes, from a given list of genes of interest, are involved. The  network refers to connected pathways and genes partecipating to sequential steps and thus presumed to affect the phenotype/condition of interest. 
+This manual describes the Pathways Network Visualizer (PANEV) R package. The idea is to create a 'functional' network between a set of main pathways of interest (first level - FL or 1L) and *n* levels of upstream/downstream interconnected pathways, to identify which genes, from a given list of genes of interest, are involved. The  network refers to connected pathways and genes partecipating to sequential steps and thus presumed to affect the phenotype/condition of interest. 
 
-More in details, PANEV  is based on information available on KEGG databases. The network is created based on the number (*n*) of levels required for the investigation. Starting from the FL (1L) chosen by the user, PANEV uncovers the connections between 1L and upstream/downstream pathways (from 1 to *n* degrees of interaction). Then, once the backbone of interaction pathways is created, PANEV highlights the genes belonging to the multiple investigated levels and provides a pathways/genes-based network visualization.
+More in details, PANEV  is based on information available on KEGG databases. The network is created based on the number (*n*) of levels required for the investigation. Starting from the FL (1L) chosen by the user, PANEV uncovers the connections between 1L and upstream/downstream pathways (from 1 to *n* levels). Then, once the backbone of pathways is created, PANEV highlights the genes belonging to the multiple investigated levels and provides a pathways/genes-based network visualization.
 The highlighted genes may be considered good candidates for the trait/condition of interest, because supported by functional evidence.
 
 Overall, PANEV helps to overcome the limitations of classical functional enrichment analysis and pathway analysis, facilitating the interpretation of complex biological processes.
@@ -39,7 +39,7 @@ However, since the package relies on KEGG, PANEV returns meaningful results only
 
 The package is able to analyse genomic or transcriptomic outcomes for all species annotated in KEGG.
 
-The access to KEGG repositories has specific copyright conditions (https://www.kegg.jp/kegg/legal.html). PaNeV uses KEGGREST package (https://bioconductor.org/packages/release/bioc/html/KEGGREST.html) functions to download individual pathway graphs and data files through API or HTTP access, which is freely available for academic and non-commercial uses. 
+The access to KEGG repositories has specific copyright conditions (https://www.kegg.jp/kegg/legal.html). PANEV uses KEGGREST package (https://bioconductor.org/packages/release/bioc/html/KEGGREST.html) functions to download individual pathway graphs and data files through API or HTTP access, which is freely available for academic and non-commercial uses. 
 
 \pagebreak
 
@@ -415,11 +415,11 @@ KEGG.species.sus <- as.character(list[1,2])
 #Data analyses
 
 ##PANEV analysis and result visualization
-PANEV R package automates the process of functional classification of genes of interest, detecting the genes falling inside a **functional interaction network** of pathways. The network, created from selected main pathways (FL) and upstream/downstream dependent ones, helps to interpret functional profiles of genes, underlying complex biological processes.
+PANEV R package automates the process of functional classification of genes of interest, detecting the genes inside a **functional network** of pathways. The network, created from selected main pathways (FL) and upstream/downstream dependent ones, helps to interpret functional profiles of genes, underlying complex biological processes.
 
 
 ###Genomic dataset
-For genomic data, functional interaction network is created, taking into account **upstream and downstream pathways** connected with FL pathways. The network is formed by pathways involved in sequential steps, interacting at more levels (from **2** to **n**), as required by the user. After that, PANEV highlights the genes falling inside the network and provides a pathways/genes-based network visualization. The genes highlighted may be considered good candidates for the trait/condition of interest.
+For genomic data, functional network is created, taking into account **upstream and downstream pathways** connected with FL pathways. The network is formed by pathways involved in sequential steps, interacting at more levels (from **2** to **n**), as required by the user. After that, PANEV highlights the genes inside the network and provides a pathways/genes-based network visualization. The genes highlighted may be considered good candidates for the trait/condition of interest.
 
 The *panev.script* function requires:
 
@@ -429,7 +429,7 @@ The *panev.script* function requires:
  
  - species code,
  
- - number of interaction levels.
+ - number of levels.
  
 Please see the above "Data preparation" section to understand how to prepare the correct input files. 
 
@@ -476,7 +476,7 @@ panev.script(in.file = "data.txt",
 
 A new folder is created and files resulting from the analysis are saved inside. 
 
-The function generates *n* text files, with *n* equal to the number of levels required for the investigation (i.e. level of interaction). Each single *.txt* file is a table containing the genes and the related pathways for a specific level of interaction. 
+The function generates *n* text files, with *n* equal to the number of levels required for the investigation (i.e. level). Each single *.txt* file is a table containing the genes and the related pathways for a specific level 
 
 ```r
 #Summary of PANEV results at FL level obtained with the example dataset
@@ -490,7 +490,7 @@ genes.1L
 Along with the **tabular format**, the function gets also the **diagram visualization** of PANEV results, saved in an interactive '*.html*' file.
 The diagram allows zooming on all content for an optimal readability.
 
-```{r pressure2, echo=FALSE, fig.cap="Fig.2: An example of the 'html' file with the network-based visualization of PANEV results. The green circles represent the  functional candidate genes falling inside the pathways associated with the trait of interest and/or resulted in interaction. The violet diamonds represent the first-degree (FL) interaction pathway, directly connected to the trait of interest and showing candidate gene(s). The yellow diamonds represent the second level of pathways in interaction with FL pathways and showing candidate gene(s). The orange diamonds represent the pathways investigated without any candidate gene. The diagram allows identifying the relationships among genes and pathways for each investigated level.", out.width = '100%'}
+```{r pressure2, echo=FALSE, fig.cap="Fig.2: An example of the 'html' file with the network-based visualization of PANEV results. The green circles represent the  functional candidate genes inside the network of pathways generated. The violet diamonds represent the first level (FL) pathway(s), directly connected to the trait of interest and showing candidate gene(s). The yellow diamonds represent the second level of pathways connected with FL pathways and showing candidate gene(s). The orange diamonds represent the pathways investigated without any candidate gene. The diagram allows identifying the relationships among genes and pathways for each investigated level.", out.width = '100%'}
 knitr::include_graphics("images/fig2.png")
 ```
 
@@ -501,7 +501,7 @@ knitr::include_graphics("images/fig3.png")
 ```
 
 ###Transcriptomic dataset
-For transcriptomic data, PANEV takes into account any possible **interaction only among the FL pathways** and the list of differentially expressed genes (DEG). 
+For transcriptomic data, PANEV takes into account any possible connection **only among the FL pathways** and the list of differentially expressed genes (DEG). 
 
 The *panev.script* function requires:
 
@@ -563,7 +563,7 @@ panev.exprscript(in.file = "exprdata.txt",
 ```
 A new folder is created and files resulting from the analysis are saved inside.
 
-The function generates a diagram visualization, taking into account any possible interaction among the FL pathways and DEGs. The diagram helps to interpret the results obtained from gene expression experiments showing the nodes (i.e. genes and pathways) coloured according to their FCs and pathway expression estimated scores [e.g. flux values (Bionaz et al., 2012)], respectively.
+The function generates a diagram visualization, taking into account any possible connection among the FL pathways and DEGs. The diagram helps to interpret the results obtained from gene expression experiments showing the nodes (i.e. genes and pathways) coloured according to their FCs and pathway expression estimated scores [e.g. flux values (Bionaz et al., 2012)], respectively.
 
 The classification into upregulated/downregulated genes/pathways is done as function of top FC/estimated score values. 
 
@@ -686,7 +686,7 @@ We performed PANEV considering the list of 171 newly genes, to verify the possib
 ##Genomic dataset analysis
 '*The Type I diabetes mellitus*', '*Insulin resistance*' and '*AGE-RAGE signaling pathway in diabetic complications*' were chosen as FL pathways, since clearly connected to the trait of interest (Greenbaum, 2002; Ramasamy et al., 2005). 
 
-Considering the complexity of the trait, the analysis was performed up to the third degrees of interaction (Field et al., 1997).
+Considering the complexity of the trait, the analysis was performed up to the third level (Field et al., 1997).
 
 After data preparation, only 5 out of 171 genes had no entrez gene identifier. This list was used for running the PANEV function.
 
@@ -748,7 +748,7 @@ The other three genes (*RASIP1*, *STRN4* and *HLA-J*) were not detected by PANEV
 Along with these genes, PANEV highlighted also other interesting genes (*ITPR3*, *BAK1*, *IL10*, *HMGB1* and *MICA*) not discussed by Qui et al. (2014), since validated only by the differential expression study or only by the replication study.
 
 ```r
-#Summary of PANEV results considering first degree of interaction (FL or 1L) pathways
+#Summary of PANEV results considering first level (FL or 1L) pathways
 genes.1L <- read.table("PANEV_RESULTS_validation/1Lgenes.txt", header = TRUE)
 genes.1L
 #     ensemblgene       entrezgene  gene_name        path_description  path_ID
@@ -771,7 +771,7 @@ genes.2L
 ```
 
 ```r
-#Summary of PANEV results considering third degree of interaction (3L) pathways
+#Summary of PANEV results considering third level (3L) pathways
 genes.1L <- read.table("PANEV_RESULTS_validation/1Lgenes.txt", header = TRUE)
 genes.1L
 #      ensemblgene  entrezgene  gene_name                            path_description       path_ID

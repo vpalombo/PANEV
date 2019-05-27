@@ -13,7 +13,7 @@ Author: Valentino Palombo, Marco Milanesi, Gabriella Sferra, Stefano Capomaccio,
 
 Maintainer: Valentino Palombo <valentino.palombo@gmail.com>
 
-Description: PaNeV is an R package set for pathway-based network gene visualization. Based on information available on KEGG, it maps and visualizes genes within a network of upstream and downstream-connected pathways (from 1 to n levels). The pathway graphs help interpreting functional profiles of cluster of genes underlying complex biological processes.
+Description: PaNeV is an R package set for pathway-based network gene visualization. Based on information available on KEGG, it maps and visualizes genes within a network of upstream and downstream-connected pathways (from 1 to *n* levels). The pathway graphs help interpreting functional profiles of cluster of genes underlying complex biological processes.
 
 License: Artistic-2.0
 

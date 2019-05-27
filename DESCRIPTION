@@ -17,7 +17,7 @@ Imports:
   XML (>= 3.98-1.11),
   visNetwork (>= 2.0.3),
   RColorBrewer (>= 1.1-2),
-  BiocManager (> 1.30.4)
+  BiocManager (>= 1.30.4)
 LazyData: TRUE
 RoxygenNote: 6.1.0
 Suggests: knitr, rmarkdown

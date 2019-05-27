@@ -35,7 +35,7 @@ PANEV functions could be divided in two different steps: data preparation and da
 
 Since PANEV interrogates biomaRt or KEGG databases through KEGGREST, a **working internet connection** is required to properly run PANEV functions.
 
-<img src="images/fig1.png" alt="Fig.1: The general architecture of the workflow of PANEV package and schematic illustration of main functions. The yellow rectangles represent the PANEV functions. The green circles represent the input data lists, in particular gene or pathway lists. The red diamonds represent the output from data preparation PANEV functions. The blue rectangles represent the final PANEV outcomes." width="100%" />
+<img src="PANEV/vignettes/images/fig1.png" alt="Fig.1: The general architecture of the workflow of PANEV package and schematic illustration of main functions. The yellow rectangles represent the PANEV functions. The green circles represent the input data lists, in particular gene or pathway lists. The red diamonds represent the output from data preparation PANEV functions. The blue rectangles represent the final PANEV outcomes." width="100%" />
 <p class="caption">
 Fig.1: The general architecture of the workflow of PANEV package and schematic illustration of main functions. The yellow rectangles represent the PANEV functions. The green circles represent the input data lists, in particular gene or pathway lists. The red diamonds represent the output from data preparation PANEV functions. The blue rectangles represent the final PANEV outcomes.
 </p>

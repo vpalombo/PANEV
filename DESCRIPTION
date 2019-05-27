@@ -6,18 +6,18 @@ Date: 2019-05-13
 Author: Valentino Palombo, Marco Milanesi, Gabriella Sferra, Stefano Capomaccio, Sandy Sgorlon, Mariasilvia D'Andrea
 Maintainer: Valentino Palombo <valentino.palombo@gmail.com>
 Description: PaNeV is an R package set for pathway-based network gene visualization. Based on information available on KEGG, it maps and visualizes genes within a network of upstream and downstream-connected pathways (from 1 to n levels). The pathway graphs help interpreting functional profiles of cluster of genes underlying complex biological processes. 
-License: GPL (>=3)
+License: Artistic-2.0
 Imports:
-  bc3net (>= 1.0.4),
+  bc3net,
   biomaRt,
   KEGGREST,
-  data.table (>= 1.11.4),
-  stringr (>= 1.3.1),
-  dplyr (>= 0.7.5),
-  XML (>= 3.98-1.11),
-  visNetwork (>= 2.0.3),
-  RColorBrewer (>= 1.1-2),
-  BiocManager (>= 1.30.4)
+  data.table,
+  stringr,
+  dplyr,
+  XML,
+  visNetwork,
+  RColorBrewer,
+  BiocManager
 LazyData: TRUE
 RoxygenNote: 6.1.0
 Suggests: knitr, rmarkdown

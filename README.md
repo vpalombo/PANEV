@@ -1,11 +1,9 @@
-PANEV
-=====
+Pathway Network Visualizer (PaNeV)
+==================================
 
 Package: PANEV
 
 Type: R Package
-
-Title: PaNeV: an R package for a pathway-based network visualization
 
 Version: 1.0
 

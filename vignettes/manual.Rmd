@@ -66,6 +66,13 @@ This manual focuses on PaNeV v.1.0. PaNeV requires the pre-installation of the f
 The R scripts and package described in this manual can be downloaded and installed from github link https://github.com/vpalombo/panev. 
 The package is installed using:
 ```
+#install biomaRt and KEGGREST
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager") #if needed
+BiocManager::install("biomaRt") #if needed
+BiocManager::install("KEGGREST") #if needed
+
+#install devtools
 install.packages("devtools") #if needed
 library("devtools")
 install_github("vpalombo/PANEV")

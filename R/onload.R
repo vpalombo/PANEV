@@ -18,8 +18,6 @@
   suppressWarnings(suppressPackageStartupMessages(library(visNetwork)))
   suppressWarnings(suppressPackageStartupMessages(library(RColorBrewer)))
   suppressWarnings(suppressPackageStartupMessages(library(BiocManager)))
-  suppressWarnings(suppressPackageStartupMessages(library(biomaRt)))
-  suppressWarnings(suppressPackageStartupMessages(library(KEGGREST)))
 
   require(bc3net)
   require(data.table)
@@ -29,8 +27,6 @@
   require(visNetwork)
   require(RColorBrewer)
   require(BiocManager)
-  BiocManager::install("biomaRt")
-  BiocManager::install("KEGGREST")
   
 }
 

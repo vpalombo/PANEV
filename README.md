@@ -37,7 +37,7 @@ The access to KEGG repositories has specific copyright conditions (<https://www.
 Installation
 ============
 
-The R scripts and package described in this manual can be downloaded and installed from github link <https://github.com/vpalombo/panev>. The package is installed using:
+This text focuses on PaNeV v.1.0. PaNeV requires the pre-installation of the following packages: ‘devtools’ (<https://cran.r-project.org/package=devtools>), ‘biomaRt’ and ‘KEGGREST’ (<https://bioconductor.org/>). The R scripts and package described in this text can be downloaded and installed from github link <https://github.com/vpalombo/panev>. The package is installed using:
 
     install.packages("devtools") #if needed
     library("devtools")

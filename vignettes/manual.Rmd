@@ -9,6 +9,8 @@ output:
     toc: yes
   word_document:
     toc: yes
+  md_document:
+    variant: markdown_github
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
   %\VignetteEncoding{UTF-8}
@@ -23,6 +25,22 @@ knitr::opts_chunk$set(
 ```
 \pagebreak
 
+#Pathway Network Visualizer (PaNeV)
+Package: PANEV
+
+Type: R Package
+
+Version: 1.0
+
+Date: 2019-05-13
+
+Author: Valentino Palombo, Marco Milanesi, Gabriella Sferra, Stefano Capomaccio, Sandy Sgorlon, Mariasilvia D'Andrea
+
+Maintainer: Valentino Palombo <valentino.palombo@gmail.com>
+
+Description: PaNeV is an R package set for pathway-based network gene visualization. Based on information available on KEGG, it maps and visualizes genes within a network of upstream and downstream-connected pathways (from 1 to *n* levels). The pathway graphs help interpreting functional profiles of cluster of genes underlying complex biological processes.
+
+License: Artistic-2.0
 
 #Abstract
 Nowadays, the increasing in data generated from genomic and transcriptomic analysis requires strategies to solve the challenge of data mining. In this sense, the use of tools for pathway analysis and/or functional enrichment is *de facto* standard for the post analytic interrogation. 
@@ -44,6 +62,7 @@ The access to KEGG repositories has specific copyright conditions (https://www.k
 \pagebreak
 
 #Installation
+This manual focuses on PaNeV v.1.0. PaNeV requires the pre-installation of the following packages: ‘devtools’ (https://cran.r-project.org/package=devtools), ‘biomaRt’ and ‘KEGGREST’ (https://bioconductor.org/). 
 The R scripts and package described in this manual can be downloaded and installed from github link https://github.com/vpalombo/panev. 
 The package is installed using:
 ```

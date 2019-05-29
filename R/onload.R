@@ -29,8 +29,8 @@
   require(visNetwork)
   require(RColorBrewer)
   require(BiocManager)
-  require(biomaRt)
-  require(KEGGREST)
-
+  BiocManager::install("biomaRt")
+  BiocManager::install("KEGGREST")
+  
 }
 

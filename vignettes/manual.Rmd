@@ -38,26 +38,21 @@ Author: Valentino Palombo, Marco Milanesi, Gabriella Sferra, Stefano Capomaccio,
 
 Maintainer: Valentino Palombo <valentino.palombo@gmail.com>
 
-Description: PaNeV is an R package set for pathway-based network gene visualization. Based on information available on KEGG, it maps and visualizes genes within a network of upstream and downstream-connected pathways (from 1 to *n* levels). The pathway graphs help interpreting functional profiles of cluster of genes underlying complex biological processes.
+Description: PaNeV is an R package set for pathway-based network gene visualization. Based on information available on KEGG, it maps and visualizes genes within a network of upstream and downstream-connected pathways (from 1 to *n* levels). The pathway graphs help interpreting functional profiles of cluster of genes.
 
 License: Artistic-2.0
 
 #Abstract
-Nowadays, the increasing in data generated from genomic and transcriptomic analysis requires strategies to solve the challenge of data mining. In this sense, the use of tools for pathway analysis and/or functional enrichment is *de facto* standard for the post analytic interrogation. 
+Nowadays, the increasing in data generated from genomic and transcriptomic analyses requires strategies to solve the challenge of data mining. In this sense, the use of tools for pathway analysis and/or functional enrichment is *de facto* standard for the post analytic interrogation. 
 In particular, when complex phenomenon is considered, create a network of multiple interconnected pathways of interest could be useful to investigate the underlying biology and, ultimately, identify functional candidate genes affecting the trait under investigation.
 
 This manual describes the Pathways Network Visualizer (PANEV) R package. The idea is to create a 'functional' network between a set of main pathways of interest (first level - FL or 1L) and *n* levels of upstream/downstream interconnected pathways, to identify which genes, from a given list of genes of interest, are involved. The  network refers to connected pathways and genes partecipating to sequential steps and thus presumed to affect the phenotype/condition of interest. 
 
-More in details, PANEV  is based on information available on KEGG databases. The network is created based on the number (*n*) of levels required for the investigation. Starting from the FL (1L) chosen by the user, PANEV uncovers the connections between 1L and upstream/downstream pathways (from 1 to *n* levels). Then, once the backbone of pathways is created, PANEV highlights the genes belonging to the multiple investigated levels and provides a pathways/genes-based network visualization.
+More in details, PANEV  is based on information available on KEGG databases. The network is created based on the number (*n*) of levels required for the investigation. Starting from the FL (1L) chosen by the user, PANEV uncovers the connections between 1L and upstream/downstream pathways (from 1 to *n* levels). Then, once the backbone of pathways is created, PANEV highlights genes, among a list of provided ones, belonging to the multiple investigated levels and provides a pathways/genes-based network visualization.
 The highlighted genes may be considered good candidates for the trait/condition of interest, because supported by functional evidence.
+Overall, PANEV combined with classical functional enrichment analysis and/or pathway analysis can facilitate the interpretation of complex biological processes.
 
-Overall, PANEV helps to overcome the limitations of classical functional enrichment analysis and pathway analysis, facilitating the interpretation of complex biological processes.
-
-However, since the package relies on KEGG, PANEV returns meaningful results only for genes with functional information available.
-
-The package is able to analyse genomic or transcriptomic outcomes for all species annotated in KEGG.
-
-The access to KEGG repositories has specific copyright conditions (https://www.kegg.jp/kegg/legal.html). PANEV uses KEGGREST package (https://bioconductor.org/packages/release/bioc/html/KEGGREST.html) functions to download individual pathway graphs and data files through API or HTTP access, which is freely available for academic and non-commercial uses. 
+Since the package relies on KEGG, PANEV returns meaningful results only for genes with functional information available. The package is able to analyse genomic or transcriptomic outcomes for all species annotated in KEGG. The access to KEGG repositories has specific copyright conditions (https://www.kegg.jp/kegg/legal.html). PANEV uses KEGGREST package (https://bioconductor.org/packages/release/bioc/html/KEGGREST.html) functions to download individual pathway graphs and data files through API or HTTP access, which is freely available for academic and non-commercial uses. 
 
 \pagebreak
 
@@ -109,7 +104,7 @@ The files comprise:
      - *exprdata.txt*. An example of differentally expressed genes (DEG) list properly formatted and ready to run PANEV main functions;
      - *expr_listPath.txt*. An example file containing the list of main pathway of interest (FL or 1L) with relative expression estimated scores [i.e. flux values obtained with Dinamic Impact Approach (Bionaz et al., 2012)].
 
-Example input files used in the publication can be created using the command:
+Example input files used for the validation in reference publication can be created using the command:
 ```r
 # Copy the example data in the current working directory
 panev.example(type="validation")
@@ -441,7 +436,7 @@ KEGG.species.sus <- as.character(list[1,2])
 #Data analyses
 
 ##PANEV analysis and result visualization
-PANEV R package automates the process of functional classification of genes of interest, detecting the genes inside a **functional network** of pathways. The network, created from selected main pathways (FL) and upstream/downstream dependent ones, helps to interpret functional profiles of genes, underlying complex biological processes.
+PANEV automates the process of functional classification of genes of interest, detecting the genes inside a **functional network** of pathways. The network, created from selected main pathways (FL) and upstream/downstream dependent ones, helps to interpret functional profiles of genes, underlying complex biological processes.
 
 
 ###Genomic dataset
@@ -527,7 +522,7 @@ knitr::include_graphics("images/fig3.png")
 ```
 
 ###Transcriptomic dataset
-For transcriptomic data, PANEV takes into account any possible connection **only among the FL pathways** and the list of differentially expressed genes (DEG). 
+For transcriptomic data, PANEV takes into account any possible connection **only among the FL pathways** and a list of differentially expressed genes (DEG). 
 
 The *panev.script* function requires:
 

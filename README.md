@@ -31,13 +31,7 @@ Since the package relies on KEGG, PANEV returns meaningful results only for gene
 Installation
 ============
 
-This text focuses on PaNeV v.1.0. PaNeV requires the pre-installation of the following packages: ‘devtools’ (<https://cran.r-project.org/package=devtools>), ‘biomaRt’ and ‘KEGGREST’ (<https://bioconductor.org/>). The R scripts and package described in this text can be downloaded and installed from github link <https://github.com/vpalombo/panev>. The package is installed using:
-
-    #install biomaRt and KEGGREST
-    if (!requireNamespace("BiocManager", quietly = TRUE))
-        install.packages("BiocManager") #if needed
-    BiocManager::install("biomaRt") #if needed
-    BiocManager::install("KEGGREST") #if needed
+This manual focuses on PaNeV v.1.0. PaNeV requires the pre-installation of ‘devtools’ package from CRAN (<https://cran.r-project.org/package=devtools>). Once satisfied the requirement, the R scripts and package described in this manual can be downloaded and installed from github link <https://github.com/vpalombo/panev>. The package is installed using:
 
     #install devtools
     install.packages("devtools") #if needed

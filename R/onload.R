@@ -15,18 +15,24 @@
   suppressWarnings(suppressPackageStartupMessages(library(stringr)))
   suppressWarnings(suppressPackageStartupMessages(library(dplyr)))
   suppressWarnings(suppressPackageStartupMessages(library(XML)))
+  suppressWarnings(suppressPackageStartupMessages(library(xml2)))
   suppressWarnings(suppressPackageStartupMessages(library(visNetwork)))
   suppressWarnings(suppressPackageStartupMessages(library(RColorBrewer)))
   suppressWarnings(suppressPackageStartupMessages(library(BiocManager)))
-
+  suppressWarnings(suppressPackageStartupMessages(library(KEGGREST)))
+  suppressWarnings(suppressPackageStartupMessages(library(biomaRt)))
+  
   require(bc3net)
   require(data.table)
   require(stringr)
   require(dplyr)
   require(XML)
+  require(xml2)
   require(visNetwork)
   require(RColorBrewer)
   require(BiocManager)
+  require(KEGGREST)
+  require(biomaRt)
   
 }
 

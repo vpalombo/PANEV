@@ -62,6 +62,8 @@ The package is installed using:
 ```
 #install devtools
 install.packages("devtools") #if needed
+
+#install PANEV
 library("devtools")
 install_github("vpalombo/PANEV")
 ```

@@ -35,6 +35,8 @@ This manual focuses on PaNeV v.1.0. PaNeV requires the pre-installation of ‘de
 
     #install devtools
     install.packages("devtools") #if needed
+
+    #install PANEV
     library("devtools")
     install_github("vpalombo/PANEV")
 

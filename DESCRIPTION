@@ -16,6 +16,7 @@ Imports:
   stringr,
   dplyr,
   XML,
+  xml2,
   visNetwork,
   RColorBrewer,
   BiocManager,

@@ -30,7 +30,7 @@ panev.example()
 
 #Look for the organism code matching the search string 
 list <- panev.biomartSpecies(string = "pig")
-biomart.species <- as.character(list[4,1]) # sscrofa_gene_ensembl
+biomart.species <- as.character(list[6,1]) # sscrofa_gene_ensembl
 
 #Convert the gene list with ensembl gene id
 # Copy the example data file 'gene_list.txt' in the current working directory

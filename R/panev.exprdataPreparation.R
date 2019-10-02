@@ -97,7 +97,7 @@ panev.exprdataPreparation <- function(
   if (gene_id=="ensembl"){
     cat("\n")
     cat("Converting from ensembl ID to entrez ID ... \n")
-    converted <- biomaRt::getBM(attributes = c("ensembl_gene_id", "entrezgene", "external_gene_name"),
+    converted <- biomaRt::getBM(attributes = c("ensembl_gene_id", "entrezgene_id", "external_gene_name"),
                                 filters = c("ensembl_gene_id"),
                                 values = genelist,
                                 mart=(biomaRt::useMart("ensembl", biomart.species)), verbose = FALSE)
@@ -114,11 +114,11 @@ panev.exprdataPreparation <- function(
   }else{
     cat("\n")
     cat("Converting from entrez ID to ensembl ID ... \n")
-    converted <- biomaRt::getBM(attributes = c("ensembl_gene_id", "entrezgene", "external_gene_name"),
-                                filters = c("entrezgene"),
+    converted <- biomaRt::getBM(attributes = c("ensembl_gene_id", "entrezgene_id", "external_gene_name"),
+                                filters = c("entrezgene_id"),
                                 values = genelist,
                                 mart=(biomaRt::useMart("ensembl", biomart.species)), verbose = FALSE)
-    genelist <- merge(genelist, converted, by.x = "entrezgene", by.y = "entrezgene", all = F)
+    genelist <- merge(genelist, converted, by.x = "entrezgene", by.y = "entrezgene_id", all = F)
     genelist <- unique(genelist)
     cat("DONE\n")
     #cat("\n")

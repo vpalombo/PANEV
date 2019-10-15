@@ -145,7 +145,7 @@ For genomic data, PANEV requires a specific format dataset. The list of the gene
 
 User can create a properly formatted dataset from a simple gene list using *panev.dataPreparation* function. This function will convert the single gene list from **ensembl** to **entrez** gene ID (or vice versa), and add at the same time the **gene symbol**.
 
-It is recommended to run this function before using *panev.script*.
+It is recommended to run this function before using *panev.network*.
 
 Preparation of formatted gene list from ensembl gene ID:
 
@@ -161,7 +161,7 @@ head(genelist)
 #   5 ENSBTAG00000001521
 #   6 ENSBTAG00000001522
 
-# Prepare the dataset for panev.script function converting gene name from ensembl to entrez id
+# Prepare the dataset for panev.network function converting gene name from ensembl to entrez id
 genelist.converted <- panev.dataPreparation(in.file = "ensembl_genelist.txt", 
                                           gene_id = "ensembl", 
                                           biomart.species = biomart.species.bos)
@@ -199,7 +199,7 @@ head(genelist)
 #   5    782391
 #   6    781828
 
-# Prepare the dataset for panev.script function converting gene name from entrez to ensembl id
+# Prepare the dataset for panev.network function converting gene name from entrez to ensembl id
 genelist.converted <- panev.dataPreparation(in.file = "entrez_genelist.txt", 
                                           gene_id = "entrez", 
                                           biomart.species = biomart.species.bos)
@@ -229,7 +229,7 @@ For transcriptomic data, PANEV requires a specific format dataset. The gene list
 
 User can create a PANEV formatted dataset using *panev.exprdataPreparation* function. This function will convert the DEG list with relative **FC** and **p-value** from **ensembl** to **entrez** gene ID (or vice versa), and add at the same time **gene symbols**.
 
-It is recommended to run this function before using *panev.exprscript*.
+It is recommended to run this function before using *panev.exprnetwork*.
 
 Preparation of formatted DEG list from ensembl gene ID:
 
@@ -245,7 +245,7 @@ head(genelist)
 #   5 ENSSSCG00000011621  2.824720966 0.000442323
 #   6 ENSSSCG00000000042    3.3779108 0.000712043
 
-# Prepare the dataset for panev.script function converting gene name from ensembl to entrez id
+# Prepare the dataset for panev.network function converting gene name from ensembl to entrez id
 genelist.expr.converted <- panev.exprdataPreparation(in.file = "ensembl_expr_genelist.txt", 
                                                    gene_id = "ensembl", 
                                                    biomart.species = biomart.species.sus)
@@ -283,7 +283,7 @@ head(genelist)
 #   5  100155420  -1.426236   0.001286279
 #   6  100154200  -1.492203   0.000286301
 
-# Prepare the dataset for panev.script function converting gene name from entrez to ensembl id
+# Prepare the dataset for panev.network function converting gene name from entrez to ensembl id
 genelist.expr.converted <- panev.exprdataPreparation(in.file = "entrez_expr_genelist.txt", 
                                                    gene_id = "entrez", 
                                                    biomart.species = biomart.species.sus)
@@ -352,7 +352,7 @@ FL.gene <- c("path:map00061", "path:map00062", "path:map00071", "path:map00072")
 
 ### For transcriptomic dataset analysis
 
-In case of transcriptomic dataset analysis, the (1L) FL must be provided as a **'*.txt*' file**, stored in working directory, with the **list of *path\_ID***, obtained with *panev.pathList*, and **relative expression estimated scores**, obtained by gene set enrichment analysis \[e.g. flux value (Bionaz et al., 2012)\].
+In case of transcriptomic dataset analysis, the list of pathways of interest must be provided as a **'*.txt*' file**, stored in working directory, with the **list of *path\_ID***, obtained with *panev.pathList*, and **relative expression estimated scores**, obtained by gene set enrichment analysis \[e.g. flux value (Bionaz et al., 2012)\].
 
 ``` r
 # Example of main pathways of interest (FL) for transcriptomic data analysis
@@ -436,7 +436,7 @@ PANEV automates the process of functional classification of genes of interest, d
 
 For genomic data, functional network is created, taking into account **upstream and downstream pathways** connected with FL pathways. The network is formed by pathways involved in sequential steps, connected at more levels (from **1** to **n**), as required by the user. After that, PANEV highlights the genes inside the network and provides a pathways/genes-based network visualization. The genes highlighted may be considered good candidates for the trait/condition of interest.
 
-The *panev.script* function requires:
+The *panev.network* function requires:
 
 -   properly formatted gene list,
 
@@ -463,11 +463,11 @@ Please see the above "Data preparation" section to understand how to prepare the
 #   6 ENSBTAG00000001522     526138             MTERF3
 
 # Perform PANEV 
-panev.script(in.file = "data.txt", 
-           out.file = "FA", 
-           species = KEGG.species.bos, 
-           FL = FL.gene, 
-           levels = 2)
+panev.network(in.file = "data.txt", 
+              out.file = "FA", 
+              species = KEGG.species.bos, 
+              FL = FL.gene, 
+              levels = 2)
 #   Input file imported! 
 #   
 #   Gene list specified... and correct! 
@@ -512,9 +512,9 @@ The '*html*' diagram is **interactive and interrogable**. You can select nodes b
 
 ### Transcriptomic dataset
 
-For transcriptomic data, PANEV takes into account any possible connection **only among the FL pathways** and a list of differentially expressed genes (DEG).
+For transcriptomic data, PANEV takes into account any possible connection among **a list pathways of interest** and a **list of differentially expressed genes (DEG)**.
 
-The *panev.script* function requires:
+The *panev.network* function requires:
 
 -   properly formatted DEG list,
 
@@ -547,11 +547,11 @@ Please see the above "Data preparation" section to understand how to prepare the
 #   3 path:map00071 385.73774
 
 # Perform PANEV on transcriptomic dataset
-panev.exprscript(in.file = "exprdata.txt", 
-               path.file = "expr_listPath.txt", 
-               out.file = "expression_data", 
-               species = KEGG.species.sus, 
-               pvalue = 0.05)
+panev.exprnetwork(in.file = "exprdata.txt", 
+                  path.file = "expr_listPath.txt", 
+                  out.file = "expression_data", 
+                  species = KEGG.species.sus, 
+                  pvalue = 0.05)
 #   Input file imported! 
 #   
 #   Pathway input file imported! 
@@ -721,7 +721,7 @@ levels = 3
 
 
 # Run the PANEV function
-panev.script(in.file = in.file, 
+panev.network(in.file = in.file, 
            out.file = "validation", 
            species = species, 
            FL = FL, 
@@ -914,11 +914,11 @@ list <- panev.speciesCode(string = "homo")
 species=as.character(list[1,2]) # hsa
 
 # Perform PANEV on transcriptomic dataset
-panev.exprscript(in.file = in.file, 
-               path.file = path.file, 
-               out.file = "expression_data_validation", 
-               species = species, 
-               pvalue = 0.05)
+panev.exprnetwork(in.file = in.file, 
+                  path.file = path.file, 
+                  out.file = "expression_data_validation", 
+                  species = species, 
+                  pvalue = 0.05)
 #   Input file imported! 
 #   
 #   Pathway input file imported! 

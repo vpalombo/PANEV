@@ -516,7 +516,7 @@ knitr::include_graphics("images/fig3.png")
 ```
 
 ###Transcriptomic dataset
-For transcriptomic data, PANEV takes into account any possible connection among **a list pathways** and **a list of differentially expressed genes (DEG)**. 
+For transcriptomic data, PANEV takes into account any possible connection among **a list of pathways of interest** and **a list of differentially expressed genes (DEG)**. 
 
 The *panev.exprnetwork* function requires:
 

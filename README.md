@@ -518,7 +518,7 @@ The *panev.network* function requires:
 
 -   properly formatted DEG list,
 
--   properly formatted FL (1L) list,
+-   properly formatted list of pathway of interest,
 
 -   species code,
 

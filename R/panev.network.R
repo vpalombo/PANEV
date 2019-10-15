@@ -1,6 +1,6 @@
 #' @title Pathways Network Visualization (PANEV)
 #' @description The function performs a pathway analysis taking into account both upstream and downstream dependent network of functional related genes, from 2 to \emph{n} degrees of interaction. This function generates \emph{n} '\emph{.txt}' files, one for each level of interaction, containing the candidate genes and the related pathways highlighted. Along with the tabular format results, the function gets also the diagram visualization of PANEV results, saved in an interactive '\emph{.html}' file.
-#' @usage panev.script(in.file = NULL, out.file = "PANEV_gene", species = NULL, 
+#' @usage panev.network(in.file = NULL, out.file = "PANEV_gene", species = NULL, 
 #'                   FL = NULL, levels = 2)
 #' @param in.file Name of input file (with extension) containing the gene list of interest. The file \bold{must} contain three columns labelled as \emph{'ensembl_gene_id'}, \emph{'entrezgene'} and \emph{'external_gene_name'}, respectively. The file \bold{must} rely in the working directory. The handy function \code{\link[PANEV]{panev.dataPreparation}} could be used to create a properly formatted input file from a single gene list.
 #' @param out.file Name of the folder where the results will be stored and of the output diagram file (default =  'PANEV_gene').
@@ -35,21 +35,21 @@
 #' species=as.character(list[1,2]) # bta 
 #' 
 #' # Run the PANEV function
-#' panev.script(in.file = in.file, 
-#'            out.file = out.file, 
-#'            species = species, 
-#'            FL = FL, 
-#'            levels = levels)
+#' panev.network(in.file = in.file, 
+#'               out.file = out.file, 
+#'               species = species, 
+#'               FL = FL, 
+#'               levels = levels)
 #'            
 
-#Script: panev.script.R
+#Script: panev.network.R
 #License: GPLv3 or later
-#Modification date: 2019-05-13
+#Modification date: 2019-10-15
 #Written by: Valentino Palombo
 #Contact: valentino.palombo@gmail.com
 #Description: Run PANEV and get diagram visualization.
 
-panev.script <- function(
+panev.network <- function(
   in.file=NULL,
   out.file="PANEV_gene",
   species=NULL,

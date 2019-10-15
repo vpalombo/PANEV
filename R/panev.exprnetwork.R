@@ -1,6 +1,6 @@
 #' @title PANEV on gene expression datasets
 #' @description The function visualizes PANEV results from expression gene datasets, considering any interactions among selected pathways. For each pathway the diagram helps to visualize associated genes that overcome a user defined \emph{p-value} threshold. The color is based on the fold change (\emph{FC}) value.
-#' @usage panev.exprscript(in.file = NULL, path.file = NULL, out.file = "PANEV_expr", 
+#' @usage panev.exprnetwork(in.file = NULL, path.file = NULL, out.file = "PANEV_expr", 
 #'                       species = NULL, pvalue = 0.05)
 #' @param in.file Name of input file (with extension). The input file containing the differentially expressed genes (DEG) analysis results. The file \bold{must} contain five columns labeled \emph{'ensembl_gene_id'}, \emph{'entrezgene'}, \emph{'external_gene_name'}, \emph{'FC'} and \emph{'pvalue'}. The \code{\link[PANEV]{panev.exprdataPreparation}} function can be used to create the properly formatted input file from a gene expression list. The input file \bold{must} rely in working directory (default = NULL).
 #' @param path.file Name of input file (with extension). The input file containing two columns labeled \emph{path_ID} and \emph{value}, containing respectively the ID of pathways of interest (\code{\link[PANEV]{panev.pathList}} function could be used to check if they are available), and relative biological estimated score value (e.g. flux value obtained with Dinamic Impact Approach analysis developed and described by Bionaz et al., 2012). The input file \bold{must} rely in working directory (default = NULL).
@@ -28,21 +28,21 @@
 #' species = as.character(list[1,2]) # ssc
 #' 
 #' # Run the PANEV function
-#' panev.exprscript(in.file = in.file, 
-#'                path.file = path.file, 
-#'                out.file = out.file, 
-#'                species = species, 
-#'                pvalue = pvalue)
+#' panev.exprnetwork(in.file = in.file, 
+#'                   path.file = path.file, 
+#'                   out.file = out.file, 
+#'                   species = species, 
+#'                   pvalue = pvalue)
 #' 
 
-#Script: panev.exprscript.R
+#Script: panev.exprnetwork.R
 #License: GPLv3 or later
-#Modification date: 2019-05-13
+#Modification date: 2019-10-15
 #Written by: Valentino Palombo
 #Contact: valentino.palombo@gmail.com
 #Description: PANEV diagram visualization of expression datasets.
 
-panev.exprscript <- function(
+panev.exprnetwork <- function(
   in.file = NULL,
   path.file = NULL,
   out.file = "PANEV_expr",

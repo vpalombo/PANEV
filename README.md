@@ -514,7 +514,7 @@ The '*html*' diagram is **interactive and interrogable**. You can select nodes b
 
 For transcriptomic data, PANEV takes into account any possible connection among **a list pathways of interest** and a **list of differentially expressed genes (DEG)**.
 
-The *panev.network* function requires:
+The *panev.exprnetwork* function requires:
 
 -   properly formatted DEG list,
 

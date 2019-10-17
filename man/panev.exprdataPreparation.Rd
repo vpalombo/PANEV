@@ -17,7 +17,7 @@ panev.exprdataPreparation(in.file, gene_id = NULL, biomart.species = NULL)
 A \emph{<in.file>_converted.txt} file with five columns labeled \emph{'ensembl_gene_id'}, \emph{'entrezgene'} and \emph{'external_gene_name'}, \emph{'FC'}, \emph{'pvalue'}, stored in the working directory.
 }
 \description{
-In case of an expression dataset, to run \code{\link[PANEV]{panev.exprscript}} function, PANEV requires a \emph{dataframe} containing five columns labelled as follows: \emph{ensembl gene id}, \emph{entrezgene}, \emph{external gene name}, \emph{FC}, \emph{pvalue}. 
+In case of an expression dataset, to run \code{\link[PANEV]{panev.exprnetwork}} function, PANEV requires a \emph{dataframe} containing five columns labelled as follows: \emph{ensembl gene id}, \emph{entrezgene}, \emph{external gene name}, \emph{FC}, \emph{pvalue}. 
 This function helps to create a properly formatted dataframe, converting the gene list from \emph{ensembl} or \emph{entrez} gene annotation (or vice versa) and adding the \emph{gene symbol}.
 }
 \details{

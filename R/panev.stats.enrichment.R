@@ -5,11 +5,13 @@
 #' @param out.file The specific name of generated files (default = 'PANEV_enrich').
 #' @param species The species code of interest. You can get the correct code among the list of those available in KEGG with the \code{\link[PANEV]{panev.speciesCode}} function.
 #' @details This function is based on \code{\link[KEGGREST]{keggList}} and \code{\link[KEGGREST]{keggLink}} functions of \pkg{KEGGREST} package (\url{http://bioconductor.org/packages/release/bioc/html/KEGGREST.html}.
+#' @details The enrichment analysis is based on \code{\link[bc3net]{enrichment}} function of \pkg{bc3net} package (\url{https://cran.r-project.org/web/packages/bc3net/index.html}.
 #' @return A \emph{<out.file>_enrichment.txt} file containing the results of functional enrichment analysis, based on a one-sided Fisher's exact test (hypergeometric test).
 #' @return A \emph{<out.file>_GxP.txt} file containing the numbers of gene(s) detected for single pathway.
 #' @return A \emph{<out.file>_PxG.txt} file containing the numbers of pathway(s) detected for single gene.
 #' @author Valentino Palombo (\email{valentino.palombo@gmail.com})
 #' @references Tenenbaum D (2017). KEGGREST: Client-side REST access to KEGG. R package version 1.16.1. 
+#' @references Simoes R de M, Emmert-Streib F (2012). Bagging statistical network inference from large-scale gene expression data. PLOS ONE; 7: e33624. doi:10.1371/journal.pone.0033624
 #' @examples ##### EXAMPLES CODE #####
 #' #Copy the example files in the current working directory
 #' panev.example()
@@ -84,7 +86,7 @@ panev.stats.enrichment <- function(
   pathtofind <- unique(KEGGgenes2$rn)
   genesets <- list()
   for (i in 1:length(pathtofind)) {
-    genesets[[paste(pathtofind[i])]] <- subset(KEGGgenes2$V1, KEGGgenes$rn==pathtofind[i])
+    genesets[[paste(pathtofind[i])]] <- subset(KEGGgenes2$V1, KEGGgenes2$rn==pathtofind[i])
   }
   enrich <- bc3net::enrichment(genes, reference, genesets, adj = "fdr", verbose = FALSE)
   enrich <- merge(x = enrich, y = KEGGpath, by.x = "TermID", by.y = "rn", all=F)

@@ -25,6 +25,8 @@ The function takes as input the principal descriptive information on given gene 
 }
 \details{
 This function is based on \code{\link[KEGGREST]{keggList}} and \code{\link[KEGGREST]{keggLink}} functions of \pkg{KEGGREST} package (\url{http://bioconductor.org/packages/release/bioc/html/KEGGREST.html}.
+
+The enrichment analysis is based on \code{\link[bc3net]{enrichment}} function of \pkg{bc3net} package (\url{https://cran.r-project.org/web/packages/bc3net/index.html}.
 }
 \examples{
 ##### EXAMPLES CODE #####
@@ -52,6 +54,8 @@ panev.stats.enrichment(in.file = "ensembl_genelist_converted.txt",
 }
 \references{
 Tenenbaum D (2017). KEGGREST: Client-side REST access to KEGG. R package version 1.16.1.
+
+Simoes R de M, Emmert-Streib F (2012). Bagging statistical network inference from large-scale gene expression data. PLOS ONE; 7: e33624. doi:10.1371/journal.pone.0033624
 }
 \author{
 Valentino Palombo (\email{valentino.palombo@gmail.com})

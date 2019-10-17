@@ -17,7 +17,7 @@ panev.dataPreparation(in.file, gene_id = NULL, biomart.species = NULL)
 A \emph{<in.file>_converted.txt} file containing three columns with \emph{'ensembl_gene_id'}, \emph{'entrezgene'} and \emph{'external_gene_name'} respectively, stored in the working directory.
 }
 \description{
-The function helps to create a properly formatted gene list required by \code{\link[PANEV]{panev.script}}: a \emph{dataframe} with three columns labelled as '\emph{ensembl_gene_id}', '\emph{entrezgene}' and '\emph{external_gene_name}', respectively.
+The function helps to create a properly formatted gene list required by \code{\link[PANEV]{panev.network}}: a \emph{dataframe} with three columns labelled as '\emph{ensembl_gene_id}', '\emph{entrezgene}' and '\emph{external_gene_name}', respectively.
 }
 \details{
 This function is based on the main \pkg{biomaRt} (\url{http://bioconductor.org/packages/release/bioc/html/biomaRt.html}) query function \code{\link[biomaRt]{getBM}} which, given a set of filters and corresponding values, it retrieves the user specified attributes from the BioMart database one is connected to.

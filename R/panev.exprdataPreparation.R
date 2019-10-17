@@ -1,5 +1,5 @@
 #' @title PANEV gene expression dataset preparation 
-#' @description In case of an expression dataset, to run \code{\link[PANEV]{panev.exprscript}} function, PANEV requires a \emph{dataframe} containing five columns labelled as follows: \emph{ensembl gene id}, \emph{entrezgene}, \emph{external gene name}, \emph{FC}, \emph{pvalue}. 
+#' @description In case of an expression dataset, to run \code{\link[PANEV]{panev.exprnetwork}} function, PANEV requires a \emph{dataframe} containing five columns labelled as follows: \emph{ensembl gene id}, \emph{entrezgene}, \emph{external gene name}, \emph{FC}, \emph{pvalue}. 
 #' This function helps to create a properly formatted dataframe, converting the gene list from \emph{ensembl} or \emph{entrez} gene annotation (or vice versa) and adding the \emph{gene symbol}.
 #' @usage panev.exprdataPreparation(in.file, gene_id = NULL, biomart.species = NULL)
 #' @param in.file Name of input file (with extension). The input file is a table with three columns labelled \emph{ensembl_gene_id} OR \emph{'entrezgene'}, \emph{'FC'} and \emph{'pvalue'}, respectivelly. The input file \bold{must} rely in the working directory.

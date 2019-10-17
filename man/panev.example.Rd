@@ -17,18 +17,18 @@ The example files used in the help section are:
 \itemize{
 \item{\emph{ensembl_genelist.txt}: this is the input file to test \code{\link[PANEV]{panev.dataPreparation}}. Please check function help to have information about the file format. }
 \item{\emph{entrez_genelist.txt}:  this is the input file to test \code{\link[PANEV]{panev.dataPreparation}}. Please check function help to have information about the file format. }
-\item{\emph{data.txt}: this is the input file to test \code{\link[PANEV]{panev.script}} and \code{\link[PANEV]{panev.stats.enrichment}}. Please check function help to have information about the file format. }
+\item{\emph{data.txt}: this is the input file to test \code{\link[PANEV]{panev.network}} and \code{\link[PANEV]{panev.stats.enrichment}}. Please check function help to have information about the file format. }
 \item{\emph{ensembl_expr_genelist.txt}: this is the input file to test \code{\link[PANEV]{panev.exprdataPreparation}}. Please check function help to have information about the file format. }
 \item{\emph{entrez_expr_genelist.txt}: it is the example input file to test \code{\link[PANEV]{panev.exprdataPreparation}}. Please check function help to have information about the file format. }
-\item{\emph{expr_listPath.txt}: this is the input file to test \code{\link[PANEV]{panev.exprscript}}. Please check function help to have information about the file format. }
-\item{\emph{exprdata.txt}: this is the input file to test \code{\link[PANEV]{panev.exprscript}} and \code{\link[PANEV]{panev.stats.enrichment}}. Please check functions help to have information about the file format. }
+\item{\emph{expr_listPath.txt}: this is the input file to test \code{\link[PANEV]{panev.exprnetwork}}. Please check function help to have information about the file format. }
+\item{\emph{exprdata.txt}: this is the input file to test \code{\link[PANEV]{panev.exprnetwork}} and \code{\link[PANEV]{panev.stats.enrichment}}. Please check functions help to have information about the file format. }
 }
 
 The files used in the publication to validate PANEV R package are: 
 \itemize{
-\item{\emph{genelist_annotated_qiu2014.txt}: this is the input file used in the publication to test \code{\link[PANEV]{panev.script}}. The gene list is from a publicly available data set from a study on human type 1 diabetes mellitus - T1DM (Qiu et al., 2014). }
-\item{\emph{genelist_expr_Levy2012.txt}: this is the input file for "in.file" argument used in the publication to test \code{\link[PANEV]{panev.exprscript}}. The gene list with relative FC values is from  expression results obtained by Levy et al. (2012). }
-\item{\emph{pathlist_expr_Levy2012.txt}: this is the input file for "path.file" argument used in the publication to test \code{\link[PANEV]{panev.exprscript}}. The pathway list with relative expression score values (in this case subsitute by number of occurrence) is from expression results obtained by Levy et al. (2012). }
+\item{\emph{genelist_annotated_qiu2014.txt}: this is the input file used in the publication to test \code{\link[PANEV]{panev.network}}. The gene list is from a publicly available data set from a study on human type 1 diabetes mellitus - T1DM (Qiu et al., 2014). }
+\item{\emph{genelist_expr_Levy2012.txt}: this is the input file for "in.file" argument used in the publication to test \code{\link[PANEV]{panev.exprnetwork}}. The gene list with relative FC values is from  expression results obtained by Levy et al. (2012). }
+\item{\emph{pathlist_expr_Levy2012.txt}: this is the input file for "path.file" argument used in the publication to test \code{\link[PANEV]{panev.exprnetwork}}. The pathway list with relative expression score values (in this case subsitute by number of occurrence) is from expression results obtained by Levy et al. (2012). }
 }
 In the vignette is reported how to replicate the analyses presented in the publication.
 }

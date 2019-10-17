@@ -1,5 +1,5 @@
 #' @title PANEV gene list preparation 
-#' @description The function helps to create a properly formatted gene list required by \code{\link[PANEV]{panev.script}}: a \emph{dataframe} with three columns labelled as '\emph{ensembl_gene_id}', '\emph{entrezgene}' and '\emph{external_gene_name}', respectively.
+#' @description The function helps to create a properly formatted gene list required by \code{\link[PANEV]{panev.network}}: a \emph{dataframe} with three columns labelled as '\emph{ensembl_gene_id}', '\emph{entrezgene}' and '\emph{external_gene_name}', respectively.
 #' @usage panev.dataPreparation(in.file, gene_id = NULL, biomart.species = NULL)
 #' @param in.file Name of input file (with extension). The input file is a one column list of genes of interest, in \emph{ensembl} or \emph{entrez} gene annotation. The file \bold{must} rely in the working directory.
 #' @param gene_id Type of gene identifiers provided. User can choose among \emph{ensembl} or \emph{entrez gene ID} annotation (default = NULL).

@@ -55,7 +55,7 @@ panev.network <- function(
   species=NULL,
   FL = NULL,
   levels = 2
-  )
+)
 {
   #import genelist 
   in.file.name <- paste(in.file)
@@ -242,6 +242,7 @@ panev.network <- function(
         lks <- as.data.frame(t(as.data.frame(out_nodes$.attrs)), stringsAsFactors = F)
         lks <- unique(as.data.frame(paste(lks$name), stringsAsFactors = F))
         colnames(lks) <- "path_ID"
+        #lks <- as.data.frame(subset(lks, !(lks$path_ID %in% query$path_ID)), stringsAsFactors = F)
         nextlevel <- rbind(nextlevel, lks)
         lks$to <- lks$path_ID
         if (length(lks$to)>0) {

@@ -7,7 +7,7 @@ Type: R Package
 
 Version: 1.0
 
-Date: 2019-05-13
+Date: 2019-10-21
 
 Author: Valentino Palombo, Marco Milanesi, Gabriella Sferra, Stefano Capomaccio, Sandy Sgorlon, Mariasilvia D'Andrea
 
@@ -464,7 +464,7 @@ Please see the above "Data preparation" section to understand how to prepare the
 
 # Perform PANEV 
 panev.network(in.file = "data.txt", 
-              out.file = "FA", 
+              out.file = "example", 
               species = KEGG.species.bos, 
               FL = FL.gene, 
               levels = 2)
@@ -549,7 +549,7 @@ Please see the above "Data preparation" section to understand how to prepare the
 # Perform PANEV on transcriptomic dataset
 panev.exprnetwork(in.file = "exprdata.txt", 
                   path.file = "expr_listPath.txt", 
-                  out.file = "expression_data", 
+                  out.file = "example", 
                   species = KEGG.species.sus, 
                   pvalue = 0.05)
 #   Input file imported! 
@@ -629,7 +629,7 @@ These files are useful to explore the list of interesting pathways, which might 
 
 # Perform the enrichment analysis
 panev.stats.enrichment(in.file = "data.txt", 
-                     out.file = "enrichment_FA", 
+                     out.file = "example", 
                      species = KEGG.species.bos)
 #   Input file is imported! 
 #   
@@ -645,7 +645,7 @@ panev.stats.enrichment(in.file = "data.txt",
 #   Pathway per gene(s) table created and exported!
 
 # <out.file>_enrichment.txt file
-FA_enrich <- read.table("enrichment_FA_enrichment.txt", header = T)
+FA_enrich <- read.table("example_enrichment.txt", header = T)
 head(FA_enrich)
 #        pathway_ID n_genes all_genes       pvalue       padj                           pathway_name
 #   1 path:bta01100       8      1466  0.002440842  0.6758655                     Metabolic pathways
@@ -656,7 +656,7 @@ head(FA_enrich)
 #   6 path:bta04152       2       123  0.021290522  1.0000000                 AMPK signaling pathway
 
 # <out.file>_GxP.txt file
-FA_GxP <- read.table("enrichment_FA_GxP.txt", header = T)
+FA_GxP <- read.table("example_GxP.txt", header = T)
 head(FA_GxP)
 #     n_genes               pathway_name    pathway_ID
 #   1       8         Metabolic pathways path:bta01100
@@ -667,7 +667,7 @@ head(FA_GxP)
 #   6       2     AMPK signaling pathway path:bta04152
 
 # <out.file>_PxG.txt file
-FA_PxG <- read.table("enrichment_FA_PxG.txt", header = T)
+FA_PxG <- read.table("example_PxG.txt", header = T)
 head(FA_PxG)
 #     n_pathways entrez_gene_id    ensembl_gene_id gene_symbol
 #   1         42         281073 ENSBTAG00000007591        CHUK
@@ -679,7 +679,7 @@ head(FA_PxG)
 
 # Perform the network enrichment analysis 
 panev.network.enrichment(in.file = in.file, 
-               out.file = "enrichment_FA", 
+               out.file = "example", 
                species = KEGG.species.bos, 
                FL = FL.gene, 
                levels = 3)
@@ -701,7 +701,7 @@ panev.network.enrichment(in.file = in.file,
 # and results exported!
 
 # <out.file>_net.enrichment.txt file
-# FA_net.enrich <- read.table("enrichment_FA_net.enrichment.txt", header = T)
+# FA_net.enrich <- read.table("example_net.enrichment.txt", header = T)
 #     pathway_ID    n_genes all_genes     pvalue  padj                            pathway_name
 #1 path:bta00061          1        18  0.3105344     1                 Fatty acid biosynthesis
 #2 path:bta00500          1        32  0.4866391     1           Starch and sucrose metabolism

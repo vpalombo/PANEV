@@ -29,10 +29,10 @@
 #' list <- panev.speciesCode(string = "bos")
 #' species <- as.character(list[1,2]) # bta
 #' 
-#' #Overview on input data 
+#' #Run the PANEV enrichment function  
 #' panev.stats.enrichment(in.file = "ensembl_genelist_converted.txt", 
 #'                      out.file = "example", 
-#'                      species="bta")
+#'                      species= species)
 #' 
 
 #Script: panev.stats.enrichment.R

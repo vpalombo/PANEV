@@ -1,5 +1,5 @@
 #' @title Enrichment analysis considering PANEV result as a background
-#' @description The function perform an enrichment analysis considering as backgroud the union of pathways investigated by PANEV for generate network result.The result help to interpret the PANEV output allowing to identify the pathways most strongly associated with the input list of genes.
+#' @description The function perform an enrichment analysis of the genes highlighted by PANEV using the union of pathways investigated for generating the network result as a background.The result help to interpret the PANEV output and allows identifying the pathways most strongly associated with the generated gene list.
 #' @usage panev.network.enrichment(in.file, out.file = "PANEV_enrich", species = NULL, FL = NULL, levels = 2)
 #' @param in.file Name of input file (with extension) containing the gene list of interest. The file \bold{must} contain three columns labelled as \emph{'ensembl_gene_id'}, \emph{'entrezgene'} and \emph{'external_gene_name'}, respectively. The file \bold{must} rely in the working directory. The handy function \code{\link[PANEV]{panev.dataPreparation}} could be used to create a properly formatted input file from a single gene list.
 #' @param out.file Name of the folder where the results will be stored and of the output diagram file (default =  'PANEV_enrich').
@@ -8,7 +8,7 @@
 #' @param levels The number of levels of interactions (from \emph{1} to \emph{n}) investingated (default = 2).
 #' @details This function is based on \code{\link[KEGGREST]{keggList}} and \code{\link[KEGGREST]{keggLink}} functions of \pkg{KEGGREST} package (\url{http://bioconductor.org/packages/release/bioc/html/KEGGREST.html}.
 #' @details The enrichment analysis is based on \code{\link[bc3net]{enrichment}} function of \pkg{bc3net} package (\url{https://cran.r-project.org/web/packages/bc3net/index.html}.
-#' @return A \emph{<out.file>_enrichment.txt} file containing the results of functional enrichment analysis, based on a one-sided Fisher's exact test (hypergeometric test) and considering the PANEV network as a background.
+#' @return A \emph{<out.file>_net.enrichment.txt} file containing the results of functional enrichment analysis, based on a one-sided Fisher's exact test (hypergeometric test) and considering the PANEV network as a background.
 #' @author Valentino Palombo (\email{valentino.palombo@gmail.com})
 #' @references Tenenbaum D (2017). KEGGREST: Client-side REST access to KEGG. R package version 1.16.1. 
 #' @references Simoes R de M, Emmert-Streib F (2012). Bagging statistical network inference from large-scale gene expression data. PLOS ONE; 7: e33624. doi:10.1371/journal.pone.0033624
@@ -29,12 +29,17 @@
 #' list <- panev.speciesCode(string = "bos")
 #' species <- as.character(list[1,2]) # bta
 #' 
-#' #Overview on input data 
-#' panev.network.enrichment(in.file = in.file, 
-#'               out.file = out.file, 
+#' #Specify the first level pathways to investigate
+#' FL = c("path:map00061", "path:map00062", "path:map00071", "path:map00072")
+#' #Specify the number of levels of pathways to investigate
+#' levels = 3
+#' 
+#' #Run the PANEV enrichment function 
+#' panev.network.enrichment(in.file = "data.txt", 
+#'               out.file = "example", 
 #'               species = species, 
 #'               FL = FL, 
-#'               levels = 3)
+#'               levels = levels)
 #' 
 
 #Script: panev.network.enrichment.R
@@ -128,7 +133,7 @@ panev.network.enrichment <- function(
   enrich <- merge(x = enrich, y = KEGGpath, by.x = "TermID", by.y = "rn", all=F)
   colnames(enrich) <- c("pathway_ID", "n_genes", "all_genes", "pvalue", "padj", "pathway_name")
   enrich <- enrich[order(enrich$padj, enrich$pvalue),]
-  write.table(x = enrich, file = paste(out.file,"_enrichment.txt",sep=""), row.names = F)
+  write.table(x = enrich, file = paste(out.file,"_net.enrichment.txt",sep=""), row.names = F)
   cat("\n")
   cat("Enrichment results exported! \n")
   }else{
@@ -151,7 +156,7 @@ panev.network.enrichment <- function(
     enrich <- merge(x = enrich, y = KEGGpath, by.x = "TermID", by.y = "rn", all=F)
     colnames(enrich) <- c("pathway_ID", "n_genes", "all_genes", "pvalue", "padj", "pathway_name")
     enrich <- enrich[order(enrich$padj, enrich$pvalue),]
-    write.table(x = enrich, file = paste(out.file,"_enrichment.txt",sep=""), row.names = F)
+    write.table(x = enrich, file = paste(out.file,"_net.enrichment.txt",sep=""), row.names = F)
     cat("\n")
     cat("and results exported! \n")
   }

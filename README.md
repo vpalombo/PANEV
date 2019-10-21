@@ -597,13 +597,15 @@ The '*html*' diagram is also interactive. User can select nodes by ID/label (e.g
 Enrichment analysis
 -------------------
 
-PANEV can perform also an enrichment analysis for each KEGG term (i.e. pathways) based on **hypergeometric test** (one-sided Fisher exact test) as described by Simoes and Emmert-Streib (2012).
+PANEV provides also the ancillary functions **panev.stats.enrichment()** and **panev.network.enrichment()** to perform a gene enrichment analysis based on **hypergeometric test** (one-sided Fisher exact test), as described by Simoes and Emmert-Streib (2012). In particular, while the former allows user to search against default KEGG database, the latter allows computing the pathway enrichment of the genes highlighted by PANEV using the pathways generated in the network as a background. 
 
 The results are a series of '*.txt*' files with specific enrichment analysis results and with general descriptive information about gene and pathway occurrences.
 
 More in details:
 
 -   the \*&lt;out.file&gt;\_enrichment.txt\* file contains the enrichment analysis result. A p-value is calculated for each pathway to estimate the probability of significant over-representation.
+
+-   the \*&lt;out.file&gt;\_enrichment.txt\* file contains the enrichment analysis result of the genes highlighted by PANEV using the pathways generated in the network as a background. A p-value is calculated for each pathway to estimate the probability of significant over-representation;
 
 -   the \*&lt;out.file&gt;\_GxP.txt\* file contains the list of pathways with gene occurrences.
 
@@ -674,6 +676,39 @@ head(FA_PxG)
 #   4          8         616871 ENSBTAG00000001521       UQCRB
 #   5          5         281152 ENSBTAG00000015980        FASN
 #   6          3         510274 ENSBTAG00000001868       PCYT2
+
+# Perform the network enrichment analysis 
+panev.network.enrichment(in.file = in.file, 
+               out.file = "enrichment_FA", 
+               species = KEGG.species.bos, 
+               FL = FL.gene, 
+               levels = 3)
+               
+# Input file imported! 
+#
+# Gene list specified... and correct! 
+#
+# Species code specified...
+#
+# Pathway(s) is specified... and correct! 
+#
+# Prerequisite check passed!
+#
+# PANEV is running ... 
+# Please wait... It could be a while depending on the number of pathways and levels required! 
+#
+# Enrichment analysis started ... 
+# and results exported!
+
+# <out.file>_net.enrichment.txt file
+# FA_net.enrich <- read.table("enrichment_FA_net.enrichment.txt", header = T)
+#     pathway_ID    n_genes all_genes     pvalue  padj                            pathway_name
+#1 path:bta00061          1        18  0.3105344     1                 Fatty acid biosynthesis
+#2 path:bta00500          1        32  0.4866391     1           Starch and sucrose metabolism
+#3 path:bta00760          1        39  0.5578855     1  Nicotinate and nicotinamide metabolism
+#4 path:bta00071          1        42  0.5854757     1                  Fatty acid degradation
+#5 path:bta00330          1        48  0.6358667     1         Arginine and proline metabolism
+#6 path:bta00010          1        64  0.7435386     1            Glycolysis / Gluconeogenesis
 ```
 
 Validation in publication

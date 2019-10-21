@@ -386,13 +386,13 @@ length(list$panev_code)
 # [1] 5913
 
 head(list)
-# panev_code                                            species
-#      hsa                                Homo sapiens (human)
-#      ptr                        Pan troglodytes (chimpanzee)
-#      pps                               Pan paniscus (bonobo)
-#      ggo   Gorilla gorilla gorilla (western lowland gorilla)
-#      pon                   Pongo abelii (Sumatran orangutan)
-#      nle Nomascus leucogenys (northern white-cheeked gibbon)
+# panev_code                                             species
+#        hsa                                Homo sapiens (human)
+#        ptr                        Pan troglodytes (chimpanzee)
+#        pps                               Pan paniscus (bonobo)
+#        ggo   Gorilla gorilla gorilla (western lowland gorilla)
+#        pon                   Pongo abelii (Sumatran orangutan)
+#        nle Nomascus leucogenys (northern white-cheeked gibbon)
 ```
 To obtain the list of available code for a specific organism:
 ```r
@@ -402,13 +402,13 @@ list <- panev.speciesCode(string = "bos")
 #   Remember to use the correct organism code for relative PANEV functions.
 
 head(list)
-#                       species panev_code
-#   1          Bos taurus (cow)      bta
-#   2      Bos mutus (wild yak)      bom
-#   3 Bos indicus (zebu cattle)      biu
-#   4        Malassezia globosa      mgl
-#   5      Bosea sp. PAMC 26642      bop
-#   6           Bosea sp. RAC05      bos
+#                       species   panev_code
+#   1          Bos taurus (cow)          bta
+#   2      Bos mutus (wild yak)          bom
+#   3 Bos indicus (zebu cattle)          biu
+#   4        Malassezia globosa          mgl
+#   5      Bosea sp. PAMC 26642          bop
+#   6           Bosea sp. RAC05          bos
 KEGG.species.bos <- as.character(list[1,2])
 
 list <- panev.speciesCode(string = "pig")
@@ -416,13 +416,13 @@ list <- panev.speciesCode(string = "pig")
 #   Remember to use the correct organism code for relative PANEV functions.
 
 head(list)
-#                         species panev_code
-#   1            Sus scrofa (pig)      ssc
-#   2 Columba livia (rock pigeon)      clv
-#   3  Cajanus cajan (pigeon pea)     ccaj
-#   4        Pigmentiphaga sp. H8      pig
-#   5         Desulfovibrio piger      dpg
-#   6         Salipiger profundus     tpro
+#                         species   panev_code
+#   1            Sus scrofa (pig)          ssc
+#   2 Columba livia (rock pigeon)          clv
+#   3  Cajanus cajan (pigeon pea)         ccaj
+#   4        Pigmentiphaga sp. H8          pig
+#   5         Desulfovibrio piger          dpg
+#   6         Salipiger profundus         tpro
 KEGG.species.sus <- as.character(list[1,2]) 
 ```
 
@@ -609,19 +609,23 @@ knitr::include_graphics("images/fig5.png")
 ```
 
 ##Enrichment analysis
-PANEV can perform also an enrichment analysis for each KEGG term (i.e. pathways) based on **hypergeometric test** (one-sided Fisher exact test) as described by Simoes and Emmert-Streib (2012).
+PANEV provides also the ancillary functions **panev.stats.enrichment()** and **panev.network.enrichment()** to perform a gene enrichment analysis based on **hypergeometric test** (one-sided Fisher exact test), as described by Simoes and Emmert-Streib (2012). In particular, while the former allows user to search against default KEGG database, the latter allows computing the pathway enrichment of the genes highlighted by PANEV using the pathways generated in the network as a background. 
 
-The results are a series of '*.txt*' files with specific enrichment analysis results and with general descriptive information about gene and pathway occurrences. 
+The results are a series of '*.txt*' files with specific enrichment analysis results and, in case of **panev.stats.enrichment()** function, also with a general descriptive information about gene and pathway occurrences. 
 
 More in details:
 
 - the *<out.file>_enrichment.txt* file contains the enrichment analysis result. A p-value is calculated for each pathway to estimate the probability of significant over-representation;
+
+- the *<out.file>_net.enrichment.txt* file contains the enrichment analysis result of the genes highlighted by PANEV using the pathways generated in the network as a background. A p-value is calculated for each pathway to estimate the probability of significant over-representation;
 
 - the *<out.file>_GxP.txt* file contains the list of pathways with gene occurrences;
 
 - the *<out.file>_PxG.txt* file contains the list of genes with pathway occurrences.
 
 These files are useful to explore the list of interesting pathways, which might be possible candidates for further investigation, particularly when no previous restrictive biological assumptions on trait/condition of interest are available. 
+In particular, in case of **panev.network.enrichment()** function, the result may help to interpret the PANEV output, identifying the pathways most strongly associated with the generated gene list.
+
 
 ```r
 ### Run if it is necessary ###
@@ -686,6 +690,40 @@ head(FA_PxG)
 #   4          8         616871 ENSBTAG00000001521       UQCRB
 #   5          5         281152 ENSBTAG00000015980        FASN
 #   6          3         510274 ENSBTAG00000001868       PCYT2
+
+
+# Perform the network enrichment analysis 
+panev.network.enrichment(in.file = in.file, 
+               out.file = "enrichment_FA", 
+               species = KEGG.species.bos, 
+               FL = FL.gene, 
+               levels = 3)
+               
+# Input file imported! 
+#
+# Gene list specified... and correct! 
+#
+# Species code specified...
+#
+# Pathway(s) is specified... and correct! 
+#
+# Prerequisite check passed!
+#
+# PANEV is running ... 
+# Please wait... It could be a while depending on the number of pathways and levels required! 
+#
+# Enrichment analysis started ... 
+# and results exported!
+
+# <out.file>_net.enrichment.txt file
+# FA_net.enrich <- read.table("enrichment_FA_net.enrichment.txt", header = T)
+#     pathway_ID    n_genes all_genes     pvalue  padj                            pathway_name
+#1 path:bta00061          1        18  0.3105344     1                 Fatty acid biosynthesis
+#2 path:bta00500          1        32  0.4866391     1           Starch and sucrose metabolism
+#3 path:bta00760          1        39  0.5578855     1  Nicotinate and nicotinamide metabolism
+#4 path:bta00071          1        42  0.5854757     1                  Fatty acid degradation
+#5 path:bta00330          1        48  0.6358667     1         Arginine and proline metabolism
+#6 path:bta00010          1        64  0.7435386     1            Glycolysis / Gluconeogenesis
 ```
 
 #Validation in publication
@@ -766,8 +804,8 @@ Along with these genes, PANEV highlighted also other interesting genes (*ITPR3*,
 #Summary of PANEV results considering first level (FL or 1L) pathways
 genes.1L <- read.table("PANEV_RESULTS_validation/1Lgenes.txt", header = TRUE)
 genes.1L
-#     ensemblgene       entrezgene  gene_name        path_description  path_ID
-# 1   ENSG00000179295       5781    PTPN11          Insulin resistance  path:hsa04931
+#         ensemblgene   entrezgene  gene_name      path_description        path_ID
+# 1   ENSG00000179295         5781     PTPN11    Insulin resistance  path:hsa04931
 ```
 
 ```r

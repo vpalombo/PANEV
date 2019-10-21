@@ -597,7 +597,7 @@ The '*html*' diagram is also interactive. User can select nodes by ID/label (e.g
 Enrichment analysis
 -------------------
 
-PANEV provides also the ancillary functions **panev.stats.enrichment()** and **panev.network.enrichment()** to perform a gene enrichment analysis based on **hypergeometric test** (one-sided Fisher exact test), as described by Simoes and Emmert-Streib (2012). In particular, while the former allows user to search against default KEGG database, the latter allows computing the pathway enrichment of the genes highlighted by PANEV using the pathways generated in the network as a background. 
+PANEV provides also the ancillary functions **panev.stats.enrichment()** and **panev.network.enrichment()** to perform a gene enrichment analysis based on **hypergeometric test** (one-sided Fisher exact test), as described by Simoes and Emmert-Streib (2012). In particular, while the former function allows user to search against the default KEGG database, the latter allows computing the pathway enrichment of the genes highlighted by PANEV using the pathways generated in the network as a background. 
 
 The results are a series of '*.txt*' files with specific enrichment analysis results and with general descriptive information about gene and pathway occurrences.
 

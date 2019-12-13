@@ -48,7 +48,7 @@ In particular, when a complex phenomenon is considered, the creation of a networ
 
 This manual describes the Pathways Network Visualizer (PANEV) R package. The idea is to create a 'functional' network between a set of main pathways of interest (first level - 1L) and *n* levels of upstream/downstream interconnected pathways, to identify which genes, from a given list of genes of interest, are involved. The  network refers to connected pathways and genes participating in sequential steps and thus presumed to affect the phenotype/condition of interest. 
 
-More in detail, PANEV  is based on information available on KEGG databases. The network is created considering the number (*n*) of levels required for the investigation. Starting from the 1L, chosen by the user, PANEV uncovers the connections between 1L and upstream/downstream pathways (from 1 to *n* levels). Then, once the framework of pathways is created, PANEV highlights genes among a list of provided ones belonging to the multiple investigated levels and provides a pathways/genes-based network visualization.
+More in detail, PANEV  is based on information available on KEGG database. The network is created considering the number (*n*) of levels required for the investigation. Starting from the 1L, chosen by the user, PANEV uncovers the connections between 1L and upstream/downstream pathways (from 1 to *n* levels). Then, once the framework of pathways is created, PANEV highlights genes among a list of provided ones belonging to the multiple investigated levels and provides a pathways/genes-based network visualization.
 The highlighted genes may be considered good candidates for the trait/condition of interest since supported by functional evidence.
 Overall, PANEV in combination with classical functional enrichment analysis and/or pathway analysis can facilitate the interpretation of complex biological processes.
 
@@ -74,7 +74,7 @@ library("PANEV")
 #PANEV functions and workflow 
 PANEV functions could be divided in two different steps: data preparation and data analyses.
 
-Since PANEV interrogates biomaRt and/or KEGG databases, a **working internet connection** is required to properly run PANEV functions.
+Since PANEV interrogates biomaRt and/or KEGG database, a **working internet connection** is required to properly run PANEV functions.
 
 ```{r pressure1, echo=FALSE, fig.cap="Fig.1: The general architecture of the workflow of PANEV package and schematic illustration of main functions. The yellow rectangles represent the PANEV functions. The green circles represent the input data lists, in particular gene or pathway lists. The red diamonds represent the output from data preparation PANEV functions. The blue rectangles represent the final PANEV outcomes.", out.width = '100%'}
 knitr::include_graphics("images/fig1.png")
@@ -118,7 +118,7 @@ In this case, the files comprise:
 The preparation of a properly formatted **list of genes** and **main pathways of interest** (1L) is the first step before running the main PANEV functions.
 
 ##Gene list preparation
-Since PANEV relies on KEGG databases information, the **entrez gene identifiers** are needed. 
+Since PANEV relies on KEGG database information, the **entrez gene identifiers** are needed. 
 
 To enhance the user experience, two specific functions, *panev.dataPreparation* and *panev.exprdataPreparation*, are provided to retrieve the correct ID annotation for genomic and transcriptomic data, respectively. 
 These functions are based on the biomaRt R package, which uses the *ensembl.org* website resource, which allows up-to-date identifiers switching.
@@ -307,7 +307,7 @@ genelist.expr.converted <- panev.exprdataPreparation(in.file = "entrez_expr_gene
 #   
 #   Convertion from ensembl ID to entrez ID ... 
 #   DONE
-#   n. 3531 of your 3531 genes have corresponding gene in KEGG database. 
+#   n. 3531 of your 3531 genes have a corresponding gene in KEGG database. 
 #   Gene list exported!
 head(genelist.expr.converted)
 #     entrezgene         FC      pvalue      ensembl_gene_id  external_gene_name
@@ -796,7 +796,7 @@ panev.network(in.file = in.file,
 Overall PANEV results, obtained from the validation dataset, are in line with the reference study outcomes (Qiu et al., 2014), confirming the effectiveness of our visualization approach.
 
 In particular, 4 out of 7 genes validated by both the replication and differential expression studies (Qui et al. 2014) were highlighted by PANEV: *PTPN11*, *BCAR1*, *MYL2* and *FYN*.
-Although present in KEGG databases, the other three genes (*RASIP1*, *STRN4* and *HLA-J*) were not detected, since not assigned yet to any pathway.
+Although present in KEGG database, the other three genes (*RASIP1*, *STRN4* and *HLA-J*) were not detected, since not assigned yet to any pathway.
 
 Along with these genes, PANEV highlighted also other interesting genes (*ITPR3*, *BAK1*, *IL10*, *HMGB1* and *MICA*) not discussed by Qui et al. (2014), since validated by the differential expression or replication studies only.
 
@@ -860,7 +860,7 @@ Simultaneously, it is must be observed that some genes were not highlighted by P
 
 - they fell inside no-investigated pathway (*BRAP*, *FUT2*, *GNS*, *HIPK1*, *NUPR1*, *OR2B3*, *HIST1H4E*, *HIST1H2BF*, *OR2B3*, *OR2B6*, *OR2J2*, *OR5V1*, and *SULT1A1* genes). About 8% of our investigated genes;
 
-- although present in KEGG databases, they were not assigned yet to any pathway. About 44% of our investigated genes.
+- although present in KEGG database, they were not assigned yet to any pathway. About 44% of our investigated genes.
 
 These drawbacks clearly represent the main PANEV limitation.
 
@@ -988,7 +988,7 @@ The diagram showed the relationships among genes and pathways and it allowed us 
 #Conclusions
 PANEV represents an interesting visualization approach to reduce the complexity of the challenge of high-throughput data mining and identify candidate genes. PANEV, providing an integrated summary among pathways and genes of interest, facilitates data interpretation. 
 
-The contribution of the PANEV tool could be significant not only for well-annotated species (i.e. *Homo sapiens*, *Mus musculus*) but also for the organisms available in KEGG databases. Although KEGG is a popular and constantly updated database for biological network information, the lack or incomplete information on KEGG could represent the main PANEV disadvantage. The effectiveness of PANEV analysis, in terms of result coherency, was confirmed by the validation study. In particular, PANEV produces timesaving advantages, pointing users to genes that are biologically involved with the investigated trait.
+The contribution of the PANEV tool could be significant not only for well-annotated species (i.e. *Homo sapiens*, *Mus musculus*) but also for the organisms available in KEGG database. Although KEGG is a popular and constantly updated database for biological network information, the lack or incomplete information on KEGG could represent the main PANEV disadvantage. The effectiveness of PANEV analysis, in terms of result coherency, was confirmed by the validation study. In particular, PANEV produces timesaving advantages, pointing users to genes that are biologically involved with the investigated trait.
 
 
 #References

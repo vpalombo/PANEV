@@ -40,7 +40,7 @@ panev.pathList <- function(
     name <- grep(string, path$path_description, ignore.case = T, value=T)
     path <- data.frame(path[path$path_description %in% name,], row.names = NULL)
     if (length(path$path_ID)>0){
-      cat("The list of pathway(s), matched your string, was created! \n")
+      cat("The list of the pathway(s), matching your string, was created! \n")
       cat("Remember to use the correct path Id(s) for relative PANEV functions. \n")
       return(path)
     }else{

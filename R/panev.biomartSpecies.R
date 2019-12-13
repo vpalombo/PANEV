@@ -20,7 +20,7 @@
 #Modification date: 2019-05-13
 #Written by: Valentino Palombo
 #Contact: valentino.palombo@gmail.com
-#Description: Find organism code among the list of those available on biomaRt.
+#Description: Find the organism code among the list of those available on biomaRt.
 
 panev.biomartSpecies <- function(
   string = NULL

@@ -173,7 +173,7 @@ genelist.converted <- panev.dataPreparation(in.file = "ensembl_genelist.txt",
 #   
 #   Convertion from ensembl ID to entrez ID ... 
 #   DONE
-#   n. 37 out of 47 genes have corresponding gene in KEGG database.
+#   n. 37 out of 47 genes have a corresponding gene in KEGG database.
 #   Gene list exported!
 head(genelist.converted)
 #        ensembl_gene_id entrezgene external_gene_name
@@ -295,7 +295,7 @@ genelist.expr.converted <- panev.exprdataPreparation(in.file = "entrez_expr_gene
 #   
 #   Convertion from ensembl ID to entrez ID ... 
 #   DONE
-#   n. 3531 of your 3531 genes have corresponding gene in KEGG database. 
+#   n. 3531 of your 3531 genes have a corresponding gene in KEGG database. 
 #   Gene list exported!
 head(genelist.expr.converted)
 #     entrezgene         FC      pvalue      ensembl_gene_id  external_gene_name
@@ -567,7 +567,7 @@ panev.exprnetwork(in.file = "exprdata.txt",
 #   Prerequisite check passed!
 #   
 #   PANEV is running ... 
-#    Please wait... It could be a while depending on the number of pathways required! 
+#    Please wait... It could take a while depending on the number of pathways required! 
 #   n. 3132 of 3774 genes passed the p-value filtering.
 #   
 #   Well done! Diagram visualization was created and exported. 

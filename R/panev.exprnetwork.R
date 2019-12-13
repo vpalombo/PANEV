@@ -87,7 +87,7 @@ panev.exprnetwork <- function(
   panev.checkPath(FL = FL, species = species)
   cat("\n")
   cat("\nPrerequisite check passed!\n\nPANEV is running ... \n")
-  cat(" Please wait... It could be a while depending on the number of pathways required! \n")
+  cat(" Please wait... It could take a while depending on the number of pathways required! \n")
   #pvalue cut-off
   ngenelist <- nrow(genelist)
   genelist <- genelist[genelist$pvalue < pvalue,]

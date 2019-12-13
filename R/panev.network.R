@@ -77,7 +77,7 @@ panev.network <- function(
   panev.checkPath(species, FL)
   cat("\n")
   cat("\nPrerequisite check passed!\n\nPANEV is running ... \n")
-  cat(" Please wait... It could be a while depending on the number of pathways and levels required! \n")
+  cat(" Please wait... It could take a while depending on the number of pathways and levels required! \n")
   #set the levels to investigate
   level <- 1:levels
   #download gene/path id table 
@@ -149,7 +149,7 @@ panev.network <- function(
   panev.uploadPANEVscriptoutput(levels=levels)
   cat("\n")
   cat("Preparing PANEV diagram visualization! \n")
-  cat(" Please wait... It could be a while depending on the number of pathways and levels required! \n")
+  cat(" Please wait... It could take a while depending on the number of pathways and levels required! \n")
   #find the interactions
   #create the species-specific pathway(s) list for querying the KEGG database
   if (length(level)==1){

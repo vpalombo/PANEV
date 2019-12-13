@@ -40,7 +40,7 @@ panev.speciesCode <- function(
     if (length(species) >= 1){
       panev_code <- paste(orgs[orgs$species %in% species,1])
       result <- as.data.frame(cbind(species,panev_code))
-      cat("The list of available species, matched your string, was created! \n")
+      cat("The list of available species, matching your string, was created! \n")
       cat("Remember to use the correct organism code for relative PANEV functions. \n")
       return(result)  
     }else{

@@ -976,7 +976,7 @@ panev.exprnetwork(in.file = in.file,
 #   Prerequisite check passed!
 #   
 #   PANEV is running ... 
-#    Please wait... It could be a while depending on the number of pathways required! 
+#    Please wait... It could take a while depending on the number of pathways required! 
 #   n. 18 of 30 genes passed the p-value filtering.
 #   
 #   Well done! Diagram visualization was created and exported. 

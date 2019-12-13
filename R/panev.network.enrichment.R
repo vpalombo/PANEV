@@ -77,7 +77,7 @@ panev.network.enrichment <- function(
   panev.checkPath(species, FL)
   cat("\n")
   cat("\nPrerequisite check passed!\n\nPANEV is running ... \n")
-  cat(" Please wait... It could be a while depending on the number of pathways and levels required! \n")
+  cat(" Please wait... It could take a while depending on the number of pathways and levels required! \n")
   #set the levels to investigate
   level <- 1:levels
   #download gene/path id table 

@@ -7,7 +7,7 @@ Type: R Package
 
 Version: 1.0
 
-Date: 2019-10-21
+Date: 2019-12-13
 
 Author: Valentino Palombo, Marco Milanesi, Gabriella Sferra, Stefano Capomaccio, Sandy Sgorlon, Mariasilvia D'Andrea
 
@@ -20,18 +20,18 @@ License: Artistic-2.0
 Abstract
 ========
 
-Nowadays, the increasing of data generated from genomic and transcriptomic analyses requires strategies to solve the challenge of data mining. In this sense, the use of tools for pathway analysis and/or functional enrichment is *de facto* standard for the post analytic interrogation. In particular, when a complex phenomenon is considered, the creation of a network of multiple interconnected pathways of interest could be useful to investigate the underlying biology and, ultimately, identify functional candidate genes affecting the trait under investigation.
+Nowadays, the increase of data generated from genomic and transcriptomic analyses requires strategies to solve the challenge of data mining. In this sense, the use of tools for pathway analysis and/or functional enrichment is *de facto* standard for the post analytic interrogation. In particular, when a complex phenomenon is considered, the creation of a network of multiple interconnected pathways of interest could be useful to investigate the underlying biology and, ultimately, identify functional candidate genes affecting the trait under investigation.
 
-This manual describes the Pathways Network Visualizer (PANEV) R package. The idea is to create a 'functional' network between a set of main pathways of interest (first level - 1L) and *n* levels of upstream/downstream interconnected pathways, to identify which genes, from a given list of genes of interest, are involved. The network refers to connected pathways and genes participating to sequential steps and thus presumed to affect the phenotype/condition of interest.
+This manual describes the Pathways Network Visualizer (PANEV) R package. The idea is to create a 'functional' network between a set of main pathways of interest (first level - 1L) and *n* levels of upstream/downstream interconnected pathways, to identify which genes, from a given list of genes of interest, are involved. The network refers to connected pathways and genes participating in sequential steps and thus presumed to affect the phenotype/condition of interest.
 
-More in details, PANEV is based on information available on KEGG databases. The network is created based on the number (*n*) of levels required for the investigation. Starting from the 1L chosen by the user, PANEV uncovers the connections between 1L and upstream/downstream pathways (from 1 to *n* levels). Then, once the backbone of pathways is created, PANEV highlights genes, among a list of provided ones, belonging to the multiple investigated levels and provides a pathways/genes-based network visualization. The highlighted genes may be considered good candidates for the trait/condition of interest, because supported by functional evidence. Overall, PANEV in combination with classical functional enrichment analysis and/or pathway analysis can facilitate the interpretation of complex biological processes.
+More in detail, PANEV is based on information available on KEGG databases. The network is created based on the number (*n*) of levels required for the investigation. Starting from the 1L chosen by the user, PANEV uncovers the connections between 1L and upstream/downstream pathways (from 1 to *n* levels). Then, once the framework of pathways is created, PANEV highlights genes, among a list of provided ones, belonging to the multiple investigated levels and provides a pathways/genes-based network visualization. The highlighted genes may be considered good candidates for the trait/condition of interest because supported by functional evidence. Overall, PANEV in combination with classical functional enrichment analysis and/or pathway analysis can facilitate the interpretation of complex biological processes.
 
-Since the package relies on KEGG, PANEV returns meaningful results only for genes with functional information available. The package is able to analyse genomic or transcriptomic outcomes for all species annotated in KEGG. The access to KEGG repositories has specific copyright conditions (<https://www.kegg.jp/kegg/legal.html>). PANEV uses KEGGREST package (<https://bioconductor.org/packages/release/bioc/html/KEGGREST.html>) functions to download individual pathway graphs and data files through API or HTTP access, which is freely available for academic and non-commercial uses.
+Since the package relies on KEGG, PANEV returns meaningful results only for genes with functional information available. The package is able to analyze genomic or transcriptomic outcomes for all species annotated in KEGG. Access to KEGG repositories has specific copyright conditions (<https://www.kegg.jp/kegg/legal.html>). PANEV uses the KEGGREST package (<https://bioconductor.org/packages/release/bioc/html/KEGGREST.html>) functions to download individual pathway graphs and data files through API or HTTP access, which is freely available for academic and non-commercial uses.
 
 Installation
 ============
 
-This manual focuses on PANEV v.1.0. PANEV requires the pre-installation of ‘devtools’ package from CRAN (<https://cran.r-project.org/package=devtools>). Once satisfied the requirement, the R scripts and package described in this manual can be downloaded and installed from github link (<https://github.com/vpalombo/panev>) using:
+This manual focuses on PANEV v.1.0. PANEV requires the pre-installation of the ‘devtools’ package from CRAN (<https://cran.r-project.org/package=devtools>). Once satisfied the requirement, the R scripts and package described in this manual can be downloaded and installed from the GitHub link (<https://github.com/vpalombo/panev>) using:
 
     #install devtools
     install.packages("devtools") #if needed
@@ -65,13 +65,13 @@ panev.example()
 
 The files comprise:
 
--   for genomic dataset:
+-   for the genomic dataset:
     -   *entrez\_genelist.txt* and *ensembl\_genelist.txt*. Two examples of genes list files for genomic data preparation with entrez ID and ensembl ID annotation, respectively;
-    -   *data.txt*. An example of gene list file properly formatted, ready to run PANEV main functions.
--   For transcriptomic dataset:
-    -   *entrez\_expr\_genelist.txt* and *ensembl\_expr\_genelist.txt*. Two examples of gene list files for transcriptomic data preparation with corresponding FC and p-value in entrez ID and ensembl ID annotation, respectively;
+    -   *data.txt*. An example of a gene list file properly formatted, ready to run PANEV main functions.
+-   For the transcriptomic dataset:
+    -   *entrez\_expr\_genelist.txt* and *ensembl\_expr\_genelist.txt*. Two examples of gene list files for the transcriptomic data preparation with corresponding FC and p-value in entrez ID and ensembl ID annotation, respectively;
     -   *exprdata.txt*. An example of differentially expressed genes (DEG) list properly formatted and ready to run PANEV main functions;
-    -   *expr\_listPath.txt*. An example file containing the list of main pathways of interest (1L) with the corresponding expression estimated scores \[i.e. flux values obtained by Dynamic Impact Approach (Bionaz et al., 2012)\].
+    -   *expr\_listPath.txt*. An example file containing the list of the main pathways of interest (1L) with the corresponding expression estimated scores \[i.e. flux values obtained by Dynamic Impact Approach (Bionaz et al., 2012)\].
 
 Input files used for the validation in the reference publication can be created using the command:
 
@@ -93,27 +93,27 @@ In this case, the files comprise:
 Data preparation
 ================
 
-The preparation of a properly formatted **list of genes** and **main pathways of interest** (1L) is the first step before running main PANEV functions.
+The preparation of a properly formatted **list of genes** and **main pathways of interest** (1L) is the first step before running the main PANEV functions.
 
 Gene list preparation
 ---------------------
 
 Since PANEV relies on KEGG databases information, the **entrez gene identifiers** are needed.
 
-To endhance user experience, two specific functions, *panev.dataPreparation* and *panev.exprdataPreparation*, are provided to retrieve the correct ID annotation for genomic and transcriptomic data, respectively. These functions are based on biomaRt R package, which uses the *ensembl.org* website resource, that allows up-to-date identifiers switching.
+To enhance the user experience, two specific functions, *panev.dataPreparation* and *panev.exprdataPreparation*, are provided to retrieve the correct ID annotation for genomic and transcriptomic data, respectively. These functions are based on the biomaRt R package, which uses the *ensembl.org* website resource, which allows up-to-date identifiers switching.
 
 The ensembl correct organism code is needed to run properly data preparation functions: these codes are obtainable with the *panev.biomartSpecies* command.
 
-To create a list of all available organisms for biomaRt annotation:
+To create a list of all the organisms available for biomaRt annotation:
 
 ``` r
-# Create a list of all available organisms for biomaRt annotation
+# Create a list of all the available organisms for biomaRt annotation
 list <- panev.biomartSpecies(string = NULL)
-#   The list of all available species for gene id convertion and data preparation was created! 
-#   Remember to use the correct organism code for relative PANEV functions. 
+#   The list of all the species available for gene id conversion and data preparation was created! 
+#   Remember to use the correct organism code for the relative PANEV functions. 
 ```
 
-To obtain the list of available code for a specific organism:
+To obtain the list of the available code for a specific organism:
 
 ``` r
 # Look for a specific organism matching a search string for biomaRt annotation
@@ -137,13 +137,13 @@ list
 biomart.species.sus <- as.character(list[4,1]) 
 ```
 
-The use of data preparation functions is recommended but not mandatory. In fact, it must be emphasized that the correct performance depends on the availability to biomaRt data access for the desired species and on its correct entrez and/or ensembl ID annotation. For this reason, we strongly suggest to double-check all-possible gene annotations.
+The use of data preparation functions is recommended but not mandatory. In fact, it must be emphasized that the correct performance depends on the availability to biomaRt access to data for the desired species and on its correct entrez and/or ensembl ID annotation. For this reason, we strongly suggest to double-check all-possible gene annotations.
 
 ### For genomic dataset analysis
 
-For genomic data, PANEV requires a specific format dataset. The gene list of interest must be provided as '*.txt*' file, stored in the working directory, containing three columns labelled as *ensembl\_gene\_id*, *entrezgene* and *external\_gene\_name*, respectively.
+For genomic data, PANEV requires a specific format of dataset. The gene list of interest must be provided as '*.txt*' file, stored in the working directory, containing three columns labeled as *ensembl\_gene\_id*, *entrezgene* and *external\_gene\_name*, respectively.
 
-User can create a properly formatted dataset from a simple gene list using the *panev.dataPreparation* function. This function will convert the single gene list from **ensembl** to **entrez** gene ID (or vice versa), and it will add, at the same time, the **gene symbol**.
+Users can create a properly formatted dataset from a simple gene list using the *panev.dataPreparation* function. This function will convert the single gene list from **ensembl** to **entrez** gene ID (or vice versa), and it will add, at the same time, the **gene symbol**.
 
 It is recommended to run this function before using the *panev.network* command.
 
@@ -173,7 +173,7 @@ genelist.converted <- panev.dataPreparation(in.file = "ensembl_genelist.txt",
 #   
 #   Convertion from ensembl ID to entrez ID ... 
 #   DONE
-#   n. 37 of 47 genes have corresponding gene in KEGG database.
+#   n. 37 out of 47 genes have corresponding gene in KEGG database.
 #   Gene list exported!
 head(genelist.converted)
 #        ensembl_gene_id entrezgene external_gene_name
@@ -185,7 +185,7 @@ head(genelist.converted)
 #   6 ENSBTAG00000001522     526138             MTERF3
 ```
 
-Preparation of formatted gene list from entrez gene ID:
+Preparation of a formatted gene list from entrez gene ID:
 
 ``` r
 # Example of gene list from genomic dataset with entrez id 
@@ -199,7 +199,7 @@ head(genelist)
 #   5    782391
 #   6    781828
 
-# Prepare the dataset for panev.network function converting gene name from entrez to ensembl id
+# Preparation of the dataset for panev.network function, converting gene name from entrez to ensembl id
 genelist.converted <- panev.dataPreparation(in.file = "entrez_genelist.txt", 
                                           gene_id = "entrez", 
                                           biomart.species = biomart.species.bos)
@@ -211,7 +211,7 @@ genelist.converted <- panev.dataPreparation(in.file = "entrez_genelist.txt",
 #   
 #   Convertion from entrez ID to ensembl ID ... 
 #   DONE
-#   n. 34 of 34 genes have corresponding gene in KEGG database.
+#   n. 34 out of 34 genes have a corresponding gene in KEGG database.
 #   Gene list exported!
 head(genelist.converted)
 #     entrezgene    ensembl_gene_id external_gene_name
@@ -227,7 +227,7 @@ head(genelist.converted)
 
 For transcriptomic data, PANEV requires a specific format dataset. The gene list, containing the **differentially expressed genes** (DEG) of interest, must be provided as '*.txt*' file, stored in the working directory, with five columns labelled as *ensembl\_gene\_id*, *entrezgene*, *external\_gene\_name*, *FC* (fold change) and *pvalue*.
 
-User can create a PANEV formatted dataset using the *panev.exprdataPreparation* function. This function will convert the DEG list with the corresponding **FC** and **p-value** from **ensembl** to **entrez** gene ID (or vice versa), and add at the same time **gene symbols**.
+Users can create a PANEV formatted dataset using the *panev.exprdataPreparation* function. This function will convert the DEG list with the corresponding **FC** and **p-value** from **ensembl** to **entrez** gene ID (or vice versa), and add at the same time **gene symbols**.
 
 It is recommended to run this function before using the *panev.exprnetwork* command.
 
@@ -245,7 +245,7 @@ head(genelist)
 #   5 ENSSSCG00000011621  2.824720966 0.000442323
 #   6 ENSSSCG00000000042    3.3779108 0.000712043
 
-# Prepare the dataset for panev.network function converting gene name from ensembl to entrez id
+# Preparation of the dataset for panev.network function, converting gene name from ensembl to entrez id
 genelist.expr.converted <- panev.exprdataPreparation(in.file = "ensembl_expr_genelist.txt", 
                                                    gene_id = "ensembl", 
                                                    biomart.species = biomart.species.sus)
@@ -257,7 +257,7 @@ genelist.expr.converted <- panev.exprdataPreparation(in.file = "ensembl_expr_gen
 #   
 #   Convertion from ensembl ID to entrez ID ... 
 #   DONE
-#   n. 3708 of your 3774 genes have corresponding gene in KEGG database. 
+#   n. 3708 of your 3774 genes have a corresponding gene in KEGG database. 
 #   Gene list exported!
 head(genelist.expr.converted)
 #        ensembl_gene_id          FC         pvalue   entrezgene external_gene_name
@@ -283,7 +283,7 @@ head(genelist)
 #   5  100155420  -1.426236   0.001286279
 #   6  100154200  -1.492203   0.000286301
 
-# Prepare the dataset for panev.network function converting gene name from entrez to ensembl id
+# Preparation of the dataset for panev.network function, converting gene name from entrez to ensembl id
 genelist.expr.converted <- panev.exprdataPreparation(in.file = "entrez_expr_genelist.txt", 
                                                    gene_id = "entrez", 
                                                    biomart.species = biomart.species.sus)
@@ -310,7 +310,7 @@ head(genelist.expr.converted)
 Pathways list preparation
 -------------------------
 
-The list of main pathways of interest (first level pathways - 1L), coded as **KEGG path ID**, is mandatory to run the main PANEV functions. The list of all available pathways on KEGG is obtainable by the *panev.pathList* function, that returns a dataframe containing two columns labelled as *path\_description* and *path\_ID*, respectively. This function helps to retrieve the KEGG path ID if unknown.
+The list of main pathways of interest (first level pathways - 1L), coded as **KEGG path ID**, is mandatory to run the main PANEV functions. The list of all available pathways on KEGG is obtainable by the *panev.pathList* function, that returns a dataframe containing two columns labeled as *path\_description* and *path\_ID*, respectively. This function helps to retrieve the KEGG path ID if unknown.
 
 To obtain the list of all available pathways in KEGG:
 
@@ -321,12 +321,12 @@ list <- panev.pathList(string = NULL)
 #   Remember to use the correct path Id(s) for relative PANEV functions. 
 ```
 
-To obtain the list of available pathway(s) matching a search string:
+To obtain the list of the available pathway(s) matching a search string:
 
 ``` r
 # Look for a specific pathway(s) for PANEV, matching your search string
 list <- panev.pathList(string = "lipid")
-#   The list of pathway(s), matched your string, was created! 
+#   The list of the pathway(s), matching your string, was created! 
 #   Remember to use the correct path Id(s) for relative PANEV functions.
 list
 #                                               path_description       path_ID
@@ -343,19 +343,19 @@ list
 
 ### For genomic dataset analysis
 
-In case of genomic dataset analysis, the 1L must be provided as a **vector of PANEV pathways identifiers** (*path\_ID*) obtained with the *panev.pathList* command.
+In the case of genomic dataset analysis, the 1L must be provided as a **vector of PANEV pathways identifiers** (*path\_ID*) obtained with the *panev.pathList* command.
 
 ``` r
-# Create a vector of main pathways of interest (1L)
+# Create a vector of the main pathways of interest (1L)
 FL.gene <- c("path:map00061", "path:map00062", "path:map00071", "path:map00072")
 ```
 
 ### For transcriptomic dataset analysis
 
-In case of transcriptomic dataset analysis, the list of pathways of interest must be provided as a **'*.txt*' file**, stored in the working directory. The file must contain the **list of *path\_ID***, obtained with the *panev.pathList* command, and **relative expression estimated scores**, obtained by a gene set enrichment analysis \[e.g. flux value (Bionaz et al., 2012)\].
+In the case of transcriptomic dataset analysis, the list of pathways of interest must be provided as a **'*.txt*' file**, stored in the working directory. The file must contain the **list of *path\_ID***, obtained with the *panev.pathList* command, and **relative expression estimated scores**, obtained by a gene set enrichment analysis \[e.g. flux value (Bionaz et al., 2012)\].
 
 ``` r
-# Example of main pathways of interest (1L) for transcriptomic data analysis
+# Example of the main pathways of interest (1L) for transcriptomic data analysis
 FL.expr <- read.table("expr_listPath.txt", header=TRUE)
 FL.expr
 #           path_ID     value
@@ -375,7 +375,7 @@ To create a list of all available organisms in KEGG:
 # Create a list of all available organisms in KEGG
 list <- panev.speciesCode(string = NULL)
 #   The list of all species available for PANEV analysis was created! 
-#   Remember to use the correct organims code for relative PANEV functions.
+#   Remember to use the correct organisms code for relative PANEV functions.
 
 # Number of available species in KEGG to date:
 length(list$panev_code)
@@ -396,7 +396,7 @@ To obtain the list of available code for a specific organism:
 ``` r
 # Look for a specific organism in KEGG matching a search string
 list <- panev.speciesCode(string = "bos")
-#   The list of available species matched your string was created! 
+#   The list of available species matching your string was created! 
 #   Remember to use the correct organism code for relative PANEV functions.
 
 head(list)
@@ -410,7 +410,7 @@ head(list)
 KEGG.species.bos <- as.character(list[1,2])
 
 list <- panev.speciesCode(string = "pig")
-#   The list of available species matched your string was created! 
+#   The list of available species matching your string was created! 
 #   Remember to use the correct organism code for relative PANEV functions.
 
 head(list)
@@ -430,11 +430,11 @@ Data analyses
 PANEV analysis and visualization
 --------------------------------
 
-PANEV automates the process of functional classification of genes of interest, detecting the genes inside a **functional network** of pathways. The network created from selected main pathways (1L) and upstream/downstream dependent ones, it helps to interpret functional profiles of genes, underlying complex biological processes.
+PANEV automates the process of the functional classification of the genes of interest, detecting the genes inside a **functional network** of pathways. The network created from selected main pathways (1L) and upstream/downstream dependent ones, it helps to interpret functional profiles of genes, underlying complex biological processes.
 
 ### Genomic dataset
 
-For genomic data, functional network is created, taking into account **upstream and downstream pathways** connected with 1L pathways. The network is formed by pathways involved in sequential steps, connected at more levels (from **1** to **n**), as required by the user. After that, PANEV highlights the genes inside the network and it provides a pathways/genes-based network visualization. The genes highlighted may be considered good candidates for the trait/condition of interest.
+For genomic data, a functional network is created, taking into account **upstream and downstream pathways** connected with 1L pathways. The network is formed by pathways involved in sequential steps, connected at more levels (from **1** to **n**), as required by the user. After that, PANEV highlights the genes inside the network and it provides pathways/genes-based network visualization. The genes highlighted may be considered good candidates for the trait/condition of interest.
 
 The *panev.network* function requires:
 
@@ -444,7 +444,7 @@ The *panev.network* function requires:
 
 -   species code;
 
--   number of levels.
+-   the number of levels.
 
 Please see the above "Data preparation" section to understand how to prepare the correct input files.
 
@@ -479,22 +479,22 @@ panev.network(in.file = "data.txt",
 #   Prerequisite check passed!
 #   
 #   PANEV is running ... 
-#    Please wait... It could be a while depending on the number of pathways and levels required! 
+#    Please wait... It could take a while depending on the number of pathways and levels required! 
 #   
 #   PANEV analysis completed and relative '.txt' files exported! 
 #   
 #   Preparing PANEV diagram visualization! 
-#    Please wait... It could be a while depending on the number of pathways and levels required! 
+#    Please wait... It could take a while depending on the number of pathways and levels required! 
 #   
 #   Well done! Diagram visualization was created and exported.       
 ```
 
 A new folder is created and files resulting from the analysis are saved inside.
 
-The function generates *n* text files, with *n* equal to the number of levels required for the investigation. Each single *.txt* file is a table containing the genes and the related pathways for a specific level.
+The function generates *n* text files, with *n* equal to the number of levels required for the investigation. Every single *.txt* file is a table containing the genes and the related pathways for a specific level.
 
 ``` r
-#Summary of PANEV results at 1L level obtained with the example dataset
+#Summary of PANEV results at 1L level obtained with the example of dataset
 genes.1L <- read.table("PANEV_RESULTS_FA/1Lgenes.txt", header = TRUE)
 genes.1L
 #            ensemblgene entrezgene gene_name        path_description       path_ID
@@ -502,17 +502,17 @@ genes.1L
 #   2 ENSBTAG00000015178     505355      ECI2  Fatty acid degradation path:bta00071
 ```
 
-Along with the **tabular format**, the function gets also the **diagram visualization** of PANEV results, saved in an interactive '*.html*' file. The diagram allows zooming on all contents for an optimal readability.
+Along with the **tabular format**, the function gets also the **diagram visualization** of PANEV results, saved in an interactive '*.html*' file. The diagram allows zooming in on all the contents for optimal readability.
 
 <br> <img src="https://github.com/vpalombo/PANEV/tree/master/vignettes/images/fig2.jpg" alt="Fig.2: An example of the 'html' file with the network-based visualization of PANEV results. The green circles represent the  functional candidate genes inside the network of pathways generated. The violet diamonds represent the first level (1L) pathway(s), directly connected to the trait of interest and showing candidate gene(s). The yellow diamonds represent the second level of pathways connected with 1L pathways and showing candidate gene(s). The orange diamonds represent the pathways investigated without any candidate gene. The diagram allows identifying the relationships among genes and pathways for each investigated level." width="450"> <br>
 
-The '*html*' diagram is **interactive**. User can select nodes by ID/label (e.g *FASN* gene).
+The '*html*' diagram is **interactive**. Users can select nodes by ID/label (e.g *FASN* gene).
 
 <br> <img src="https://github.com/vpalombo/PANEV/tree/master/vignettes/images/fig3.jpg" alt="Fig.3: An example of node selection of PANEV network-based visualization result." width="450"> <br>
 
 ### Transcriptomic dataset
 
-For transcriptomic data, PANEV takes into account any possible connection within/between **a list pathways of interest** and a **list of differentially expressed genes (DEG)**.
+For transcriptomic data, PANEV takes into account any possible connection within/between **a list of pathways of interest** and a **list of differentially expressed genes (DEG)**.
 
 The *panev.exprnetwork* function requires:
 
@@ -575,7 +575,7 @@ panev.exprnetwork(in.file = "exprdata.txt",
 
 A new folder is created and files resulting from the analysis are saved inside.
 
-The function generates a diagram visualization, taking into account all possible connections within/between the 1L pathways and DEGs. The diagram helps to interpret the results obtained from gene expression experiments showing the nodes (i.e. genes and pathways) coloured according to their FCs and pathway expression estimated scores \[e.g. flux values (Bionaz et al., 2012)\], respectively.
+The function generates a diagram visualization, taking into account all possible connections within/between the 1L pathways and DEGs. The diagram helps to interpret the results obtained from gene expression experiments showing the nodes (i.e. genes and pathways) colored according to their FCs and pathway expression estimated scores \[e.g. flux values (Bionaz et al., 2012)\], respectively.
 
 The classification into upregulated/downregulated genes/pathways is done considering the top FC/estimated score values.
 
@@ -586,18 +586,18 @@ The classification into upregulated/downregulated genes/pathways is done conside
 |    high up/downregulated    | &gt;= 50% and &lt; 75% of top up/downregulated gene/pathway |
 |   strong up/downregulated   |        &gt;= 75% of top up/downregulated gene/pathway       |
 
-The '*html*' diagram is interactive and allows zooming on all contents for an optimal readability.
+The '*html*' diagram is interactive and allows zooming in on all the contents for optimal readability.
 
 <br> <img src="https://github.com/vpalombo/PANEV/tree/master/vignettes/images/fig4.jpg" alt="Fig.4: An example of the 'html' file with the network-based visualization of PANEV result considering an expression dataset. The circles represent the genes coloured based on their fold change (FC) values. The diamonds represent the pathways of interest coloured based on their expression estimated scores [i.e. flux values obtained by Dynamic Impact Approach (Bionaz et al., 2012)]. The diagram shows the relationships among genes and pathways and allows identifying functionally related entities with possible coordinated expression changes." width="450"> <br>
 
-The '*html*' diagram is also interactive. User can select nodes by ID/label (e.g. *ALDH2* gene).
+The '*html*' diagram is also interactive. Users can select nodes by ID/label (e.g. *ALDH2* gene).
 
 <br> <img src="https://github.com/vpalombo/PANEV/tree/master/vignettes/images/fig5.jpg" alt="Fig.5: An example of node selection of PANEV network-based visualization result obtained on transcriptomic dataset." width="450"> <br>
 
 Enrichment analysis
 -------------------
 
-PANEV provides also the ancillary functions **panev.stats.enrichment()** and **panev.network.enrichment()** to perform a gene enrichment analysis based on **hypergeometric test** (one-sided Fisher exact test), as described by Simoes and Emmert-Streib (2012). In particular, while the former function allows the user to search against the default KEGG database, the latter allows computing the pathway enrichment of the genes highlighted by PANEV using the pathways generated in the network as a background. 
+PANEV provides also the ancillary functions **panev.stats.enrichment()** and **panev.network.enrichment()** to perform a gene enrichment analysis based on a **hypergeometric test** (one-sided Fisher exact test), as described by Simoes and Emmert-Streib (2012). In particular, while the former function allows the user to search against the default KEGG database, the latter allows computing the pathway enrichment of the genes highlighted by PANEV using the pathways generated in the network as a background. 
 
 The results are a series of '*.txt*' files with specific enrichment analysis results and with general descriptive information about gene and pathway occurrences.
 
@@ -695,7 +695,7 @@ panev.network.enrichment(in.file = in.file,
 # Prerequisite check passed!
 #
 # PANEV is running ... 
-# Please wait... It could be a while depending on the number of pathways and levels required! 
+# Please wait... It could take a while depending on the number of pathways and levels required! 
 #
 # Enrichment analysis started ... 
 # and results exported!
@@ -716,7 +716,7 @@ Validation in publication
 
 A publicly available data set from a study on human type 1 diabetes mellitus - T1DM (Qiu et al., 2014) was used as testing set for PANEV in our publication.
 
-In the reference study, the authors carried out a gene-based genome-wide association analysis and identified 452 significant genes. Among these genes, 171 were newly identified for type 1 diabetes mellitus, since ignored in previously studies or in literature. The authors further supported the significance of 53 out 171 discovered genes with replication studies and differential expression studies.
+In the reference study, the authors carried out a gene-based genome-wide association analysis and identified 452 significant genes. Among these genes, 171 were newly identified for type 1 diabetes mellitus, since ignored in previous studies or in literature. The authors further supported the significance of 53 out of 171 discovered genes with replication studies and differential expression studies.
 
 In particular, the authors reported four non-HLA genes (*RASIP1*, *STRN4*, *BCAR1* and *MYL2*) and three *HLA* genes (*FYN*, *HLA-J* and *PPP1R11*) as validated by both the replication and differential expression studies. These genes represent the main result discussed by the authors.
 
@@ -772,17 +772,17 @@ panev.network(in.file = in.file,
 #   Prerequisite check passed!
 #   
 #   PANEV is running ... 
-#    Please wait... It could be a while depending on the number of pathways and levels required! 
+#    Please wait... It could take a while depending on the number of pathways and levels required! 
 #   
 #   PANEV analysis completed and relative '.txt' files exported! 
 #   
 #   Preparing PANEV diagram visualization! 
-#    Please wait... It could be a while depending on the number of pathways and levels required! 
+#    Please wait... It could take a while depending on the number of pathways and levels required! 
 #   
 #   Well done! Diagram visualization was created and exported. 
 ```
 
-Overall PANEV results obtained from validation dataset are in line with the reference study outcomes (Qiu et al., 2014), confirming the effectiveness of our visualization approach.
+Overall PANEV results obtained from the validation dataset are in line with the reference study outcomes (Qiu et al., 2014), confirming the effectiveness of our visualization approach.
 
 In particular, 4 out of 7 genes validated both the replication and differential expression studies (Qui et al. 2014) were highlighted by PANEV: *PTPN11*, *BCAR1*, *MYL2* and *FYN*. The other three genes (*RASIP1*, *STRN4* and *HLA-J*) were not detected by PANEV, since, although present in KEGG databases, they were not assigned yet to any pathway.
 
@@ -840,7 +840,7 @@ genes.1L
 # 22 ENSG00000050820       9564     BCAR1            Regulation of actin cytoskeleton path:hsa04810
 ```
 
-PANEV highlighted also other genes not discussed in the reference study (Qiu et al., 2014) but reported in literature as being associated to the susceptibility to T1DM disease: *CDK2* (Kim et al., 2017), *MADCAM1* (Phillips et al., 2005), *STAT4* (Bi et al., 2013), *SMAD7* (Chen et al., 2011) and *BCL2A1* (Beyan et al. 2010).
+PANEV highlighted also other genes not discussed in the reference study (Qiu et al., 2014) but reported in literature as being associated to the susceptibility to T1DM disease: *CDK2* (Kim et al., 2017), *MADCAM1* (Phillips et al., 2005), *STAT4* (Bi et al., 2013), *SMAD7* (Chen et al., 2011) and *BCL2A1* (Beyan et al., 2010).
 
 It is worth to note that, except for *CDK2*, all genes mentioned above refer to researches conducted before the reference study (Qiu at al., 2014).
 
@@ -855,11 +855,11 @@ These drawbacks clearly represent the main PANEV limitation.
 Enrichment analysis
 -------------------
 
-In accordance with the reference study (Qui et al., 2014), we performed the functional annotation clustering analysis of 452 identified T1DM genes, using the PANEV enrichment analysis function.
+In accordance with the reference study (Qui et al., 2014), we performed the functional annotation clustering analysis of the 452 identified T1DM genes, using the PANEV enrichment analysis function.
 
 ``` r
 ### Run if it is necessary ###
-# Copy the example files used as validation set in the publication in the current working directory
+# Copy the example files used as a validation set in the publication in the current working directory
 # panev.example(type="validation")
 
 # Parameters
@@ -969,20 +969,20 @@ panev.exprnetwork(in.file = in.file,
 #   Prerequisite check passed!
 #   
 #   PANEV is running ... 
-#    Please wait... It could be a while depending on the number of pathways required! 
+#    Please wait... It could take a while depending on the number of pathways required! 
 #   n. 18 of 30 genes passed the p-value filtering.
 #   
 #   Well done! Diagram visualization was created and exported. 
 ```
 
-This PANEV visualization helped to interpret the results obtained from gene expression experiments by showing the nodes (i.e. genes) coloured according to gene FC values. The diagram showed the relationships among genes and pathways and it allowed us to identify functionally related entities with possible coordinated expression changes.
+This PANEV visualization helped to interpret the results obtained from gene expression experiments by showing the nodes (i.e. genes) colored according to gene FC values. The diagram showed the relationships among genes and pathways and it allowed us to identify functionally related entities with possible coordinated expression changes.
 
 Conclusions
 ==========
 
 PANEV represents an interesting visualization approach to reduce the complexity of the challenge of high-throughput data mining and identify candidate genes identification. PANEV, providing an integrated summary among pathways and genes of interest, facilitates the data interpretation.
 
-The contribution of PANEV tool could be significant not only for well-annotated species (i.e. Homo sapiens, Mus musculus) but also for all the organisms available in KEGG databases. Although KEGG is a popular and constantly updated database for biological network information, the lack or incomplete information on KEGG could represent the main PANEV disadvantage. The effectiveness of PANEV analysis in terms of result coherency was confirmed by the validation study. In particular, PANEV produces timesaving advantages, pointing users to genes that are biologically involved with the investigated trait.
+The contribution of the PANEV tool could be significant not only for well-annotated species (i.e. Homo sapiens, Mus musculus) but also for all the organisms available in KEGG databases. Although KEGG is a popular and constantly updated database for biological network information, the lack or incomplete information on KEGG could represent the main PANEV disadvantage. The effectiveness of PANEV analysis in terms of result coherency was confirmed by the validation study. In particular, PANEV produces timesaving advantages, pointing users to genes that are biologically involved with the investigated trait.
 
 References
 ==========

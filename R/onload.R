@@ -6,8 +6,8 @@
   mymsg <- paste(mymsg,"Citation:\n")
   mymsg <- paste(mymsg,"  Authors: V. Palombo, M. Milanesi, G. Sferra, S. Capomaccio, S. Sgorlon, M. D'Andrea\n")
   mymsg <- paste(mymsg,"  Title: Pathways Network Visualization (PaNeV): an R package for a pathway-based network visualization\n")
-  mymsg <- paste(mymsg,"  Journal: ...\n")
-  mymsg <- paste(mymsg,"  DOI: ...\n")
+  mymsg <- paste(mymsg,"  Journal: BMC Bioinformatics volume 21, Article number: 46 (2020)\n")
+  mymsg <- paste(mymsg,"  DOI: https://doi.org/10.1186/s12859-020-3371-7\n")
   packageStartupMessage(mymsg)
   
   suppressWarnings(suppressPackageStartupMessages(library(bc3net)))

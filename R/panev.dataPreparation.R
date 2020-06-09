@@ -92,6 +92,7 @@ panev.dataPreparation <- function(
                                filters = c("ensembl_gene_id"),
                                values = genelist,
                                mart=(biomaRt::useMart("ensembl", biomart.species)), verbose = FALSE)
+    colnames(genelist) <- c("ensembl_gene_id", "entrezgene", "external_gene_name")
     cat("DONE\n")
     #cat("\n")
     #cat("Checking for corresponding genes in KEGG database ... \n")
@@ -108,6 +109,7 @@ panev.dataPreparation <- function(
                                filters = c("entrezgene_id"),
                                values = genelist,
                                mart=(biomaRt::useMart("ensembl", biomart.species)), verbose = FALSE)
+    colnames(genelist) <- c("entrezgene", "ensembl_gene_id", "external_gene_name")
     cat("DONE\n")
     #cat("Checking for corresponding genes in KEGG database ... \n")
     cat("n.", paste(sum(length(which(!is.na(genelist$ensembl_gene_id))))), "out of", paste(sum(length(which(!is.na(genelist$entrezgene))))), "genes have a corresponding gene in KEGG database.", sep= " ")

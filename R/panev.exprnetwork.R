@@ -155,7 +155,11 @@ panev.exprnetwork <- function(
     label <- results
     label$name <- paste(label$name)
     #merge with path description
-    label$name[label$name %in% KEGGpath$rn] <- KEGGpath$path[KEGGpath$rn %in% label$name]
+    pathlabel <- KEGGpath[KEGGpath$rn %in% label$name] #
+    target <- label$name[label$name %in% KEGGpath$rn]
+    new_order <- sapply(target, function(x,pathlabel){which(pathlabel$rn == x)}, pathlabel=pathlabel)
+    pathlabel <- pathlabel[new_order,]
+    label$name[label$name %in% KEGGpath$rn] <- pathlabel$path
     label$value <- as.numeric(paste(label$value))
     label$legend <- c(1:length(label$name))
     label$value[label$shape == "diamond"] <- label$value[label$shape == "diamond"]/max(abs(label$value[label$shape == "diamond"]))
@@ -242,4 +246,4 @@ panev.exprnetwork <- function(
     cat("\n")
     cat("Well done! Diagram visualization was created and exported. \n")
   }
-}  
+}

@@ -47,7 +47,8 @@ panev.exprnetwork <- function(
   path.file = NULL,
   out.file = "PANEV_expr",
   species = NULL,
-  pvalue = 0.05
+  pvalue = 0.05,
+  physics = T
 )
 {
   #import genelist 
@@ -226,17 +227,20 @@ panev.exprnetwork <- function(
     graph <- visNetwork::visGroups(graph, groupname = "strong downregulated pathway", color = paste(green[4]), shape="diamond")  
     graph <- visNetwork::visOptions(graph, highlightNearest = TRUE, nodesIdSelection = TRUE)
     graph <- visNetwork::visLegend(graph, useGroups = T)
+    if (physics == F){
+      graph <- visIgraphLayout(graph)
+    }
     #export the results
     RES <- paste("PANEV_exprRESULTS_",out.file,sep="")
     if (file.exists(RES)) {
       RES <- paste(RES,"/",sep="")
       wd <- getwd()
-      visNetwork::visSave(graph, file = paste(wd, "/", RES,out.file,".html", sep=""))
+      visNetwork::visSave(graph, file = paste(wd, "/", RES,out.file,".html", sep="")) 
     }else{
       dir.create(RES)
       RES <- paste(RES,"/",sep="")
       wd <- getwd()
-      visNetwork::visSave(graph, file = paste(wd, "/",RES,out.file,".html", sep=""))
+      visNetwork::visSave(graph, file = paste(wd, "/",RES,out.file,".html", sep="")) 
     }
     #clear the workspace
     panev.cleanEnvir(KEGGpath)

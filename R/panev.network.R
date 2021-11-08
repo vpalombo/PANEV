@@ -54,7 +54,8 @@ panev.network <- function(
   out.file="PANEV_gene",
   species=NULL,
   FL = NULL,
-  levels = 2
+  levels = 2,
+  physics = T
 )
 {
   #import genelist 
@@ -110,6 +111,9 @@ panev.network <- function(
   FLgenes <- merge(FLgenes, KEGGpath, by.x = "rn", by.y = "rn")
   FLgenes <- data.frame(cbind(paste(FLgenes$ensembl_gene_id), paste(FLgenes$entrezgene), paste(FLgenes$external_gene_name), paste(FLgenes$V1), paste(FLgenes$rn)), stringsAsFactors = F)
   colnames(FLgenes) <- c("ensemblgene","entrezgene", "gene_name", "path_description","path_ID")
+  FLgenes[which(FLgenes$gene_name == ""), "gene_name"] <- FLgenes[which(FLgenes$gene_name == ""),"ensemblgene"]
+  FLgenes[which(FLgenes$gene_name == "NA"), "gene_name"] <- FLgenes[which(FLgenes$gene_name == "NA"),"ensemblgene"]
+  FLgenes[which(is.na(FLgenes$gene_name)), "gene_name"] <- FLgenes[which(is.na(FLgenes$gene_name)), "ensemblgene"]
   exp <- paste(RES,"/1Lgenes.txt",sep="")
   write.table(FLgenes, exp, sep="\t", row.names = F)
   if (length(level)>1){
@@ -135,6 +139,9 @@ panev.network <- function(
       glNDI <- merge(glNDI, KEGGpath, by.x = "rn", by.y = "rn")
       glNDI <- as.data.frame(cbind(paste(glNDI$ensembl_gene_id), glNDI$entrezgene, paste(glNDI$external_gene_name), glNDI$V1, glNDI$rn))
       colnames(glNDI) <- c("ensemblgene","entrezgene", "gene_name", "path_description","path_ID")
+      glNDI[which(glNDI$gene_name == ""), "gene_name"] <- glNDI[which(glNDI$gene_name == ""),"ensemblgene"]
+      glNDI[which(glNDI$gene_name == "NA"), "gene_name"] <- glNDI[which(glNDI$gene_name == "NA"),"ensemblgene"]
+      glNDI[which(is.na(glNDI$gene_name)), "gene_name"] <- glNDI[which(is.na(glNDI$gene_name)), "ensemblgene"]
       names <- paste(j,"Lgenes.txt", sep="")
       exp <- paste(RES, names, sep="")
       write.table(glNDI, exp, sep="\t", row.names = F) 
@@ -225,6 +232,9 @@ panev.network <- function(
     graph <- visNetwork::visGroups(graph, groupname = "1Lpath", color = paste(col_vector[2]), shape="diamond")  
     graph <- visNetwork::visOptions(graph, highlightNearest = TRUE, nodesIdSelection = TRUE)
     graph <- visNetwork::visLegend(graph, useGroups = T)
+    if (physics == F){
+      graph <- visIgraphLayout(graph)
+    }
     visNetwork::visSave(graph, file = paste(out.file,".html", sep=""))
   }else{
     query <- as.data.frame(gsub("map", species, FL), stringsAsFactors = F)
@@ -349,6 +359,9 @@ panev.network <- function(
   graph <- visNetwork::visGroups(graph, groupname = "20Lpath", color = paste(col_vector[22]), shape="diamond")  
   graph <- visNetwork::visOptions(graph, highlightNearest = TRUE, nodesIdSelection = TRUE)
   graph <- visNetwork::visLegend(graph, useGroups = T)
+  if (physics == F){
+    graph <- visIgraphLayout(graph)
+  }
   visNetwork::visSave(graph, file = paste(out.file,".html", sep=""))
   #clear the workspace
   panev.cleanEnvir(KEGGpath)

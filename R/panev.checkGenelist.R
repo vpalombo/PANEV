@@ -1,13 +1,13 @@
 #Script: panev.checkGenelist.R
 #License: GPLv3 or later
-#Modification date: 2019-05-13
+#Modification date: 2025-08-25
 #Written by: Valentino Palombo
 #Contact: valentino.palombo@gmail.com
 #Description: Check the genelist before run main PANEV script
 
 panev.checkGenelist <- function(
-  genelist=NULL, 
-  type=NULL
+    genelist=NULL, 
+    type=NULL
 )
 {
   #check the arguments in the genelist
@@ -20,12 +20,12 @@ panev.checkGenelist <- function(
   
   options(warn=-1)
   if (type == "gene"){
-    if (colnames(genelist) %in% c("entrezgene", "ensembl_gene_id", "external_gene_name")){
+    if (all(c("entrezgene", "ensembl_gene_id", "external_gene_name") %in% colnames(genelist))) {
       cat("and correct! \n")
-    }else{
+    } else {
       cat("but is incorrect. Please check! \n")
       cat("Remember your gene list must have three columns with 'ensembl id', 'entrez id' and 'gene symbol', named 'ensembl_gene_id', 'entrezgene' and 'external_gene_name' respectively \n")
-      stop("Exit",call. = F)
+      stop("Exit", call. = FALSE)
     }
   }
   if (type == "expr"){
